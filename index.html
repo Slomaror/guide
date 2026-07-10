@@ -1,152 +1,268 @@
-<style>
-    /* Стили для красивого отображения */
-    body {
-        background-color: #0c0e17; /* Темный фон */
-        color: #e0e6ed; /* Светлый текст */
-        font-family: sans-serif;
-        padding: 20px;
-    }
-    .accordion-item {
-        border: 1px solid #2d3748;
-        border-radius: 8px;
-        margin-bottom: 10px;
-        overflow: hidden;
-        background-color: #161b26;
-    }
-    .accordion-header {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px;
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        font-size: 16px;
-        text-align: left;
-    }
-    .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-    }
-    .accordion-body {
-        padding: 15px;
-        border-top: 1px solid #2d3748;
-    }
-    .divider {
-        color: #2d3748;
-        margin: 15px 0;
-    }
-    .soft-bold {
-        font-weight: 600;
-        color: #e0e6ed;
-    }
-</style>
-<div class="accordion-item">
-    <button class="accordion-header">
-        <span class="tg-icon icon-combo">
-            <!-- Иконка короны в стиле Скрина 1 (цвет #ff9f43) -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="#ff9f43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px; height:24px;">
-                <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M3 20h18"/>
-            </svg>
-        </span>
-        <span class="header-title">Комбо-наборы</span>
-        <span class="arrow">▼</span>
-    </button>
-    <div class="accordion-content">
-        <div class="accordion-body">
-            <img src="https://optim.tildacdn.com/tild3465-6530-4061-a562-346466633337/-/resize/465x/-/format/webp/photo-057.jpg.webp" class="img-preview" alt="Комбо-наборы">
-            <p>Выбирайте идеальный формат погружения для себя, компании или всей семьи! Мы собрали лучшие активности парка в выгодные пакетные предложения.</p>
-            
-            <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-            <p><span class="soft-bold">🗺 Экспедиция</span><br>Идеально для глубокого погружения и знакомства с главными игровыми зонами.</p>
-            <ul>
-                <li>Арена виртуальной реальности — 1 час</li>
-                <li>Зона Ауры — 1 час</li>
-            </ul>
-            <p><span class="soft-bold">Стоимость:</span><br>Будни: 3 000 ₽ | Выходные и праздники: 4 000 ₽</p>
-            
-            <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-            <p><span class="soft-bold">⚡️ Кардио</span><br>Динамичный и активный микс для тех, кто любит много двигаться.</p>
-            <ul>
-                <li>Арена виртуальной реальности — 30 минут</li>
-                <li>Интерактив Пиксели — 30 минут</li>
-            </ul>
-            <p><span class="soft-bold">Стоимость:</span><br>Будни: 1 800 ₽ | Выходные и праздники: 2 500 ₽</p>
-            
-            <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-            <p><span class="soft-bold">🚀 Квадро</span><br>Максимум разнообразия: от шутеров до драйвовых симуляторов.</p>
-            <ul>
-                <li>Арена виртуальной реальности — 30 минут</li>
-                <li>Зона Ауры — 30 минут</li>
-                <li>Капсулы — 1 катание</li>
-                <li>Автосимулятор — 15 минут</li>
-            </ul>
-            <p><span class="soft-bold">Стоимость:</span><br>Будни: 3 200 ₽ | Выходные и праздники: 4 500 ₽</p>
-            
-            <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-            <p><span class="soft-bold">🛸 ВР Сквад 4</span><br>Готовое командное приключение для компании из 4 человек.</p>
-            <ul>
-                <li>Арена виртуальной реальности — 30 минут (для 4 игроков)</li>
-                <li>НЛО (Летающая тарелка) — 1 сеанс (для 4 игроков)</li>
-            </ul>
-            <p><span class="soft-bold">Стоимость:</span><br>Будни: 8 300 ₽ | Выходные и праздники: 12 000 ₽</p>
-            
-            <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-            <p><span class="soft-bold">🛸 ВР Сквад 5</span><br>Идеальный сбор и совместный полет для компании из 5 человек.</p>
-            <ul>
-                <li>Арена виртуальной реальности — 30 минут (для 5 игроков)</li>
-                <li>НЛО (Летающая тарелка) — 1 сеанс (для 5 игроков)</li>
-            </ul>
-            <p><span class="soft-bold">Стоимость:</span><br>Будни: 10 000 ₽ | Выходные и праздники: 14 500 ₽</p>
-            
-            <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-            <p><span class="soft-bold">🏆 Марафон</span><br>Большой тест-драйв всех главных фишек парка для тех, кто хочет попробовать всё.</p>
-            <ul>
-                <li>Арена виртуальной реальности — 30 минут</li>
-                <li>Зона Ауры — 30 минут</li>
-                <li>Интерактив Пиксели — 15 минут</li>
-                <li>Аттракционы — по 1 катанию на каждом симуляторе парка</li>
-            </ul>
-            <p><span class="soft-bold">Стоимость:</span><br>Будни: 7 000 ₽ | Выходные и праздники: 10 000 ₽</p>
-            
-            <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-            <!-- Название "Экстрим" без выделения цветом, обычный текст -->
-            <p><span class="soft-bold">🌪 Экстрим</span><br>Чистый адреналин и полное погружение на динамических платформах.</p>
-            <ul>
-                <li>🕹 Зона Аттракционов — по 1 катанию на каждом симуляторе парка (Капсулы, Летающая тарелка, Горнолыжный, Экстрим, Тир, Мото- и Автосимуляторы).</li>
-            </ul>
-            <p><span class="soft-bold">Стоимость:</span><br>Будни: 4 500 ₽ | Выходные и праздники: 6 000 ₽</p>
-            
-            <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-            <p>💡 <em>Забронировать комбо-набор или задать вопрос можно напрямую нашему администратору в мессенджере и при посещении парка!</em></p>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комбо-наборы — AURA VR</title>
+    <style>
+        /* Базовые стили и анимированный VR-фон */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: radial-gradient(circle at center, #16192b 0%, #0b0d19 100%);
+            color: #e0e6ed;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center; /* Центрирует блок по горизонтали */
+            align-items: center;     /* Центрирует блок по вертикали */
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Анимированные неоновые частицы на фоне */
+        body::before, body::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 159, 67, 0.15) 0%, rgba(0,0,0,0) 70%);
+            top: 10%;
+            left: 10%;
+            animation: floatAnimation 8s infinite alternate ease-in-out;
+            z-index: 0;
+            pointer-events: none;
+        }
+        body::after {
+            background: radial-gradient(circle, rgba(0, 168, 255, 0.1) 0%, rgba(0,0,0,0) 70%);
+            top: 60%;
+            left: 70%;
+            animation: floatAnimation 12s infinite alternate-reverse ease-in-out;
+        }
+        @keyframes floatAnimation {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-40px) scale(1.2); }
+        }
+
+        /* Контейнер аккордеона — адаптивный и отцентрированный */
+        .accordion-container {
+            width: 100%;
+            max-width: 600px; /* Идеальная ширина и для ПК, и для смартфона */
+            position: relative;
+            z-index: 1;
+        }
+
+        .accordion-item {
+            border: 1px solid rgba(255, 159, 67, 0.2);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            background: rgba(22, 25, 43, 0.85);
+            backdrop-filter: blur(10px); /* Эффект матового стекла */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: border-color 0.3s;
+        }
+        .accordion-item:hover {
+            border-color: rgba(255, 159, 67, 0.5);
+        }
+
+        /* Шапка */
+        .accordion-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 22px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: left;
+        }
+        .tg-icon {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        .header-title {
+            flex-grow: 1;
+        }
+        .arrow {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+            color: #ff9f43;
+        }
+
+        /* Контент (плавное открытие) */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-body {
+            padding: 22px;
+            border-top: 1px solid rgba(255, 159, 67, 0.1);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Изображения */
+        .img-preview {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* Текст и разделители */
+        .divider {
+            color: rgba(255, 159, 67, 0.2);
+            margin: 20px 0;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+        .soft-bold {
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 16px;
+        }
+        
+        /* Списки */
+        ul {
+            list-style: none;
+            margin: 12px 0;
+            padding-left: 5px;
+        }
+        ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            color: #cbd5e1;
+        }
+        ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #ff9f43;
+        }
+
+        /* Адаптивность под мобильные устройства */
+        @media (max-width: 480px) {
+            body { padding: 12px; }
+            .accordion-header { padding: 14px 16px; font-size: 16px; }
+            .accordion-body { padding: 16px; font-size: 14px; }
+        }
+
+        /* Состояние при открытии */
+        .accordion-item.active .arrow {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="accordion-container">
+    <div class="accordion-item">
+        <button class="accordion-header">
+            <span class="tg-icon icon-combo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ff9f43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px; height:24px;"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M3 20h18"/></svg>
+            </span>
+            <span class="header-title">Комбо-наборы</span>
+            <span class="arrow">▼</span>
+        </button>
+        <div class="accordion-content">
+            <div class="accordion-body">
+                <img src="https://optim.tildacdn.com/tild3465-6530-4061-a562-346466633337/-/resize/465x/-/format/webp/photo-057.jpg.webp" class="img-preview" alt="Комбо-наборы">
+                <p>Выбирайте идеальный формат погружения для себя, компании или всей семьи! Мы собрали лучшие активности парка в выгодные пакетные предложения.</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                <p><span class="soft-bold">🗺 Экспедиция</span><br>Идеально для глубокого погружения и знакомства с главными игровыми зонами.</p>
+                <ul>
+                    <li>Арена виртуальной реальности — 1 час</li>
+                    <li>Зона Ауры — 1 час</li>
+                </ul>
+                <p><span class="soft-bold">Стоимость:</span><br>Будни: 3 000 ₽ | Выходные и праздники: 4 000 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                <p><span class="soft-bold">⚡️ Кардио</span><br>Динамичный и активный микс для тех, кто любит много двигаться.</p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут</li>
+                    <li>Интерактив Пиксели — 30 минут</li>
+                </ul>
+                <p><span class="soft-bold">Стоимость:</span><br>Будни: 1 800 ₽ | Выходные и праздники: 2 500 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                <p><span class="soft-bold">🚀 Квадро</span><br>Максимум разнообразия: от шутеров до драйвовых симуляторов.</p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут</li>
+                    <li>Зона Ауры — 30 минут</li>
+                    <li>Капсулы — 1 катание</li>
+                    <li>Автосимулятор — 15 минут</li>
+                </ul>
+                <p><span class="soft-bold">Стоимость:</span><br>Будни: 3 200 ₽ | Выходные и праздники: 4 500 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                <p><span class="soft-bold">🛸 ВР Сквад 4</span><br>Готовое командное приключение для компании из 4 человек.</p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут (для 4 игроков)</li>
+                    <li>НЛО (Летающая тарелка) — 1 сеанс (для 4 игроков)</li>
+                </ul>
+                <p><span class="soft-bold">Стоимость:</span><br>Будни: 8 300 ₽ | Выходные и праздники: 12 000 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                <p><span class="soft-bold">🛸 ВР Сквад 5</span><br>Идеальный сбор и совместный полет для компании из 5 человек.</p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут (для 5 игроков)</li>
+                    <li>НЛО (Летающая тарелка) — 1 сеанс (для 5 игроков)</li>
+                </ul>
+                <p><span class="soft-bold">Стоимость:</span><br>Будни: 10 000 ₽ | Выходные и праздники: 14 500 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                <p><span class="soft-bold">🏆 Марафон</span><br>Большой тест-драйв всех главных фишек парка для тех, кто хочет попробовать всё.</p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут</li>
+                    <li>Зона Ауры — 30 минут</li>
+                    <li>Интерактив Пиксели — 15 минут</li>
+                    <li>Аттракционы — по 1 катанию на каждом симуляторе парка</li>
+                </ul>
+                <p><span class="soft-bold">Стоимость:</span><br>Будни: 7 000 ₽ | Выходные и праздники: 10 000 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                <p><span class="soft-bold">🌪 Экстрим</span><br>Чистый адреналин и полное погружение на динамических платформах.</p>
+                <ul>
+                    <li>🕹 Зона Аттракционов — по 1 катанию на каждом симуляторе парка (Капсулы, Летающая тарелка, Горнолыжный, Экстрим, Тир, Мото- и Автосимуляторы).</li>
+                </ul>
+                <p><span class="soft-bold">Стоимость:</span><br>Будни: 4 500 ₽ | Выходные и праздники: 6 000 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                <p>💡 <em>Забронировать комбо-набор или задать вопрос можно напрямую нашему администратору в мессенджере и при посещении парка!</em></p>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Добавьте эти стили в ваш CSS файл или блок <style> -->
-<style>
-    /* 3. Мягкая подсветка для "жирного" текста (вместо кричащего font-weight: bold) */
-    .soft-bold {
-        font-weight: 600; 
-        color: #e0e6ed; /* Слегка приглушенный белый/светло-серый */
-        letter-spacing: 0.3px;
-    }
-
-    /* 4. Выравнивание цен в Пикселях (используйте этот класс для списков с ценами) */
-    .price-list {
-        list-style: none;
-        padding-left: 0;
-    }
-    .price-list li {
-        display: flex;
-        align-items: center;
-        margin-bottom: 8px;
-    }
-    .price-list .time-prefix {
-        min-width: 70px; /* Фиксированная ширина выравнивает двоеточия и текст */
-        display: inline-block;
-    }
-</style>
+<script>
+    document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+            const accordionItem = button.parentElement;
+            const content = button.nextElementSibling;
+            
+            accordionItem.classList.toggle('active');
+            if (accordionItem.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = "0px";
+            }
+        });
+    });
+</script>
+</body>
+</html>
