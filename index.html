@@ -9,45 +9,47 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         body {
             background-color: #0b0d19;
-            color: #e0e6ed;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* Опускает весь контент строго в центр страницы */
+            justify-content: center;
             padding: 40px 20px;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Интерактивный фон «Аура» */
+        /* Фоновое свечение */
         body::before, body::after {
             content: "";
             position: absolute;
-            width: 450px;
-            height: 450px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            filter: blur(90px);
-            opacity: 0.35;
+            filter: blur(100px);
+            opacity: 0.25;
         }
         body::before {
             background: radial-gradient(circle, #ff9f43 0%, rgba(0,0,0,0) 70%);
-            top: 15%;
-            left: -150px;
+            top: 10%;
+            left: -200px;
         }
         body::after {
             background: radial-gradient(circle, #00a8ff 0%, rgba(0,0,0,0) 70%);
-            bottom: 15%;
-            right: -150px;
+            bottom: 10%;
+            right: -200px;
         }
 
-        /* Шапка по центру */
+        /* Шапка */
         .brand-header {
             text-align: center;
             position: relative;
@@ -60,16 +62,16 @@
             display: flex;
             align-items: baseline;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
         }
         .brand-title {
-            font-size: 34px;
+            font-size: 36px;
             font-weight: 900;
             color: #ffffff;
             letter-spacing: 1px;
         }
         .brand-subtitle {
-            font-size: 15px;
+            font-size: 16px;
             color: #ff9f43;
             font-weight: 700;
             letter-spacing: 0.5px;
@@ -82,7 +84,7 @@
             display: block;
         }
 
-        /* Контейнер вкладок */
+        /* Контейнер */
         .accordion-container {
             width: 100%;
             max-width: 600px;
@@ -90,92 +92,134 @@
             z-index: 1;
         }
 
-        /* Карточки зон — Контраст улучшен для идеальной видимости */
+        /* Элемент аккордеона */
         .accordion-item {
-            border: 1px solid rgba(255, 159, 67, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 14px;
             margin-bottom: 14px;
-            background: rgba(17, 20, 38, 0.95); /* Плотный темный фон */
-            backdrop-filter: blur(20px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
+            background: #121626;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
         .accordion-item:hover {
-            border-color: rgba(255, 159, 67, 0.6);
-            box-shadow: 0 10px 35px rgba(255, 159, 67, 0.15);
+            border-color: rgba(255, 159, 67, 0.4);
         }
 
-        /* Кнопка открытия */
+        /* Кнопка */
         .accordion-header {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 22px;
+            padding: 20px 24px;
             background: none;
             border: none;
             color: #ffffff;
             cursor: pointer;
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 700;
             text-align: left;
             outline: none;
         }
-        .tg-icon {
-            display: flex;
+        
+        /* Общие векторные иконки-плашки */
+        .vector-icon {
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
             margin-right: 14px;
+            flex-shrink: 0;
+            vertical-align: middle;
         }
+        .vector-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Цвета иконок по зонам */
+        .icon-arena { background: rgba(239, 68, 68, 0.15); stroke: #ef4444; fill: none; }
+        .icon-aura { background: rgba(59, 130, 246, 0.15); stroke: #3b82f6; fill: none; }
+        .icon-pixel { background: rgba(16, 185, 129, 0.15); stroke: #10b981; fill: none; }
+        .icon-attractions { background: rgba(139, 92, 246, 0.15); stroke: #8b5cf6; fill: none; }
+        .icon-combo { background: rgba(245, 158, 11, 0.15); stroke: #f59e0b; fill: none; }
+        .icon-info { background: rgba(255, 255, 255, 0.1); stroke: #ffffff; fill: none; }
+
         .header-title {
             flex-grow: 1;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         .arrow {
-            font-size: 11px;
-            transition: transform 0.3s ease;
-            color: rgba(255, 159, 67, 0.8);
+            font-size: 12px;
+            transition: transform 0.2s ease;
+            color: #94a3b8;
         }
 
-        /* Раскрывающийся контент */
+        /* Контент */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
         }
         .accordion-body {
-            padding: 22px;
-            border-top: 1px solid rgba(255, 159, 67, 0.2);
+            padding: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             font-size: 15px;
             line-height: 1.6;
-            color: #f1f5f9; /* Максимально светлый читаемый текст */
+            color: #ffffff;
         }
 
-        /* Стилизация изображений */
         .block-image {
             width: 100%;
             height: auto;
             max-height: 280px;
             object-fit: cover;
             border-radius: 10px;
-            margin-bottom: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Вложенный аккордеон для игр в Ауре */
-        .inner-accordion {
-            margin-top: 15px;
-            border: 1px solid rgba(0, 168, 255, 0.4);
+        /* Табличная верстка цен через Grid */
+        .price-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 6px 12px;
+            margin: 10px 0 16px 0;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 8px;
-            background: rgba(11, 13, 25, 0.9);
+            border-left: 3px solid #ff9f43;
+        }
+        .price-grid.blue-border { border-left-color: #3b82f6; }
+        .price-grid.green-border { border-left-color: #10b981; }
+        .price-grid.purple-border { border-left-color: #8b5cf6; }
+        .price-grid.red-border { border-left-color: #ef4444; }
+        
+        .price-label {
+            color: #94a3b8;
+            font-weight: 600;
+        }
+        .price-value {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* Вложенный аккордеон */
+        .inner-accordion {
+            margin-top: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 10px;
+            background: #090b14;
         }
         .inner-header {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 18px;
             background: none;
             border: none;
-            color: #00a8ff;
-            font-size: 14px;
-            font-weight: 600;
+            color: #3b82f6;
+            font-size: 15px;
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -185,39 +229,69 @@
         .inner-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
         }
         .inner-body {
-            padding: 15px;
+            padding: 18px;
             font-size: 14px;
-            border-top: 1px solid rgba(0, 168, 255, 0.2);
-            color: #f1f5f9;
+            border-top: 1px solid rgba(59, 130, 246, 0.15);
+            color: #ffffff;
         }
 
-        /* Разделители и текст */
+        /* Элементы текста */
         p {
-            margin-bottom: 12px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+            margin-bottom: 14px;
+        }
+        ul {
+            list-style: none;
+            margin-bottom: 14px;
+        }
+        li {
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 15px;
+        }
+        li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #ff9f43;
+        }
+        .inner-body li::before {
+            color: #3b82f6;
         }
         strong {
             color: #ffffff;
             font-weight: 700;
         }
+        .text-highlight {
+            color: #ff9f43;
+            font-weight: 600;
+        }
+        .text-blue {
+            color: #3b82f6;
+            font-weight: 600;
+        }
         .divider {
-            color: rgba(255, 159, 67, 0.4);
-            margin: 18px 0;
-            text-align: center;
-            font-size: 11px;
-            letter-spacing: 1px;
-            font-weight: bold;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 22px 0;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
         }
 
         @media (max-width: 480px) {
             body { padding: 20px 12px; }
-            .brand-title { font-size: 28px; }
-            .brand-subtitle { font-size: 13px; }
-            .accordion-header { padding: 14px 16px; font-size: 16px; }
-            .accordion-body { padding: 16px; font-size: 14px; }
+            .brand-title { font-size: 30px; }
+            .accordion-header { padding: 16px 18px; font-size: 16px; }
+            .accordion-body { padding: 18px; font-size: 14px; }
+            .price-grid { grid-template-columns: 90px 1fr; }
         }
 
         .accordion-item.active .arrow { transform: rotate(180deg); }
@@ -225,7 +299,6 @@
 </head>
 <body>
 
-<!-- Центрированная шапка страницы -->
 <div class="brand-header">
     <div class="brand-line">
         <span class="brand-title">АУРА ИГР</span>
@@ -239,8 +312,8 @@
     <!-- 1. АРЕНА ВИРТУАЛЬНОЙ РЕАЛЬНОСТИ -->
     <div class="accordion-item">
         <button class="accordion-header" type="button">
-            <span class="tg-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#ff4d4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px; height:24px;"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M16 11h.01M19 13h.01"/></svg>
+            <span class="vector-icon icon-arena">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M16 11h.01M19 13h.01"/></svg>
             </span>
             <span class="header-title">Арена виртуальной реальности</span>
             <span class="arrow">▼</span>
@@ -251,27 +324,50 @@
                 <p>Арена Виртуальной Реальности — это как Counter-Strike, пейнтбол или лазертаг, только внутри цифровых миров! Вы по-настоящему двигаетесь по просторной площадке и сражаетесь друг с другом.</p>
                 <p>Для больших компаний: у нас две арены, каждая вмещает до 10 игроков. Но если у вас масштабный праздник, мы легко объединим их в одну огромную локацию для 20 участников одновременно!</p>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>🤖 LEVEL 1. ВСЕЛЕННАЯ META FORCE</strong></p>
-                <p>• Team Force — тактический шутер в духе классических командных сражений на 12 уникальных картах.<br>
-                • Star Force — футуристичные битвы в далёкой галактике с прыжками через телепорты.<br>
-                • Elevators — vertical шутер с захватывающим перемещением между этажами и зданиями.<br>
-                • Portals — аркадный шутер с четырьмя измерениями, лифтами и порталами.</p>
+                <div class="divider"></div>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>👑 LEVEL 2. МИРЫ WARSTATION</strong></p>
-                <p>• Warstation - космический шутер с уникальными персонажами, футуристичным оружием и системой наград.<br>
-                • Military - тактический командный бой с реалистичной графикой и легендарным оружием.<br>
-                • Animals - яркий экшен в стиле аниме с битвами и ловлей магических существ.<br>
-                • Family - весёлый набор мини-игр с простой механикой для отличных семейных праздников.<br>
-                • Kids - добрая коллекция мини-игр с развивающими заданиями для самых юных гостей.</p>
+                <div class="section-title">
+                    <span class="vector-icon icon-arena" style="width:24px; height:24px; margin-right:8px;"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+                    LEVEL 1. ВСЕЛЕННАЯ META FORCE
+                </div>
+                <ul>
+                    <li><strong>Team Force</strong> — тактический шутер в духе классических командных сражений на 12 уникальных картах.</li>
+                    <li><strong>Star Force</strong> — футуристичные битвы в далёкой галактике с прыжками через телепорты.</li>
+                    <li><strong>Elevators</strong> — вертикальный шутер с захватывающим перемещением между этажами и зданиями.</li>
+                    <li><strong>Portals</strong> — аркадный шутер с четырьмя измерениями, лифтами и порталами.</li>
+                </ul>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>👤Стоимость участия (за 1 человека):</strong><br>
-                • 30 мин: Будни — 1 190 ₽ | Выходные — 1 700 ₽<br>
-                • 60 мин: Будни — 1 890 ₽ | Выходные — 2 700 ₽</p>
-                <p><strong>👥Выкуп всей арены под ключ (до 10 человек):</strong><br>
-                Будни — 14 700 ₽ | Выходные — 21 000 ₽</p>
+                <div style="height: 10px;"></div>
+                
+                <div class="section-title">
+                    <span class="vector-icon icon-arena" style="width:24px; height:24px; margin-right:8px;"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+                    LEVEL 2. МИРЫ WARSTATION
+                </div>
+                <ul>
+                    <li><strong>Warstation</strong> — космический шутер с уникальными персонажами, футуристичным оружием и системой наград.</li>
+                    <li><strong>Military</strong> — тактический командный бой с реалистичной графикой и легендарным оружием.</li>
+                    <li><strong>Animals</strong> — яркий экшен в стиле аниме с битвами и ловлей магических существ.</li>
+                    <li><strong>Family</strong> — весёлый набор мини-игр с простой механикой для отличных семейных праздников.</li>
+                    <li><strong>Kids</strong> — добрая коллекция мини-игр с развивающими заданиями для самых юных гостей.</li>
+                </ul>
+                
+                <div class="divider"></div>
+                
+                <div class="section-title">СТОИМОСТЬ УЧАСТИЯ (за 1 человека):</div>
+                <div class="price-grid red-border">
+                    <div class="price-label">30 минут:</div>
+                    <div class="price-value">Будни — 1 190 ₽ &nbsp;|&nbsp; Выходные — 1 700 ₽</div>
+                    <div class="price-label">60 минут:</div>
+                    <div class="price-value">Будни — 1 890 ₽ &nbsp;|&nbsp; Выходные — 2 700 ₽</div>
+                </div>
+                
+                <p><strong>Выкуп всей арены под ключ (до 10 человек):</strong></p>
+                <div class="price-grid red-border">
+                    <div class="price-label">Будни:</div>
+                    <div class="price-value">14 700 ₽</div>
+                    <div class="price-label">Выходные:</div>
+                    <div class="price-value">21 000 ₽</div>
+                </div>
             </div>
         </div>
     </div>
@@ -279,8 +375,8 @@
     <!-- 2. ЗОНА АУРЫ -->
     <div class="accordion-item">
         <button class="accordion-header" type="button">
-            <span class="tg-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#00a8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px; height:24px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span class="vector-icon icon-aura">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </span>
             <span class="header-title">Зона Ауры</span>
             <span class="arrow">▼</span>
@@ -288,57 +384,63 @@
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://cdn.phototourl.com/free/2026-06-15-3766765b-ad90-41e3-b814-022cc53dbbdb.jpg" class="block-image" alt="Аура">
-                <p>Зона Ауры - это классическая виртуальная реальность, где вы управляете персонажем с помощью контроллеров. Вас ждут захватывающие кооперативные приключения, атмосферные хорроры, весёлые аркады и расслабляющие миры. Мы с радостью подберём идеальный вариант под ваш вкус или пришлём список игр нужного жанра!</p>
-                <p>👥 На локации: до 5 участников одновременно.</p>
+                <p>Зона Ауры — это классическая виртуальная реальность, где вы управляете персонажем с помощью контроллеров. Вас ждут захватывающие кооперативные приключения, атмосферные хорроры, весёлые аркады и расслабляющие миры.</p>
+                <p><span class="text-blue">На локации:</span> до 5 участников одновременно.</p>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>💳 СТОИМОСТЬ УЧАСТИЯ (с человека):</strong><br>
-                Стоимость участия (за 1 человека): <br>
-                • 15 мин: Будни — 980 ₽    | Выходные — 1 400 ₽ <br>
-                • 30 мин: Будни — 1 400 ₽ | Выходные — 2 000 ₽ <br>
-                • 60 мин: Будни — 1 820 ₽ | Выходные — 2 600 ₽</p>
+                <div class="divider"></div>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p>Каталог игр: 👇</p>
-
+                <div class="section-title">СТОИМОСТЬ УЧАСТИЯ (за 1 человека):</div>
+                <div class="price-grid blue-border">
+                    <div class="price-label">15 минут:</div>
+                    <div class="price-value">Будни — 980 ₽ &nbsp;|&nbsp; Выходные — 1 400 ₽</div>
+                    <div class="price-label">30 минут:</div>
+                    <div class="price-value">Будни — 1 400 ₽ &nbsp;|&nbsp; Выходные — 2 000 ₽</div>
+                    <div class="price-label">60 минут:</div>
+                    <div class="price-value">Будни — 1 820 ₽ &nbsp;|&nbsp; Выходные — 2 600 ₽</div>
+                </div>
+                
                 <!-- Вложенный каталог игр -->
                 <div class="inner-accordion">
                     <button class="inner-header" type="button">
-                        <span>Игры в Ауре (Во что поиграть в одиночку и с друзьями)</span>
-                        <span class="inner-arrow">▼</span>
+                        <span>Полный каталог игр в Ауре</span>
+                        <span class="arrow">▼</span>
                     </button>
                     <div class="inner-content">
                         <div class="inner-body">
-                            <p>В нашем парке можно как погрузиться в атмосферное одиночное приключение, так и весело провести время с компанией.<br>
-                            Мы предлагаем заранее определиться с тем, во что окунуться во время посещения. Так вы проведёте время с максимальной пользой, заранее зная, чего требует душа.</p>
+                            <p>В нашем парке можно как погрузиться в атмосферное одиночное приключение, так и весело провести время с компанией. Мы предлагаем заранее определиться с тем, во что окунуться во время посещения.</p>
                             
-                            <div class="divider">Важно знать перед визитом</div>
-                            <p>• Длительность сеансов — на выбор: 15, 30 или 60 минут.<br>
-                            • Количество игровых мест — 5 мест в зале.<br>
-                            • Формат — можно играть как в одиночку, так и собирать команду (до 5 человек одновременно).<br>
-                            📌 <strong>Обратите внимание:</strong> при игре в кооперативе внутри нашего парка количество участников ограничено количеством свободных игровых мест (максимум 5 человек одновременно). Для игр, рассчитанных на большее число игроков, вы будете просто подключаться к внешним онлайн-серверам.</p>
+                            <div class="section-title" style="margin-top:15px; color:#3b82f6;">Важно знать перед визитом:</div>
+                            <ul>
+                                <li>Длительность сеансов — на выбор: 15, 30 или 60 минут.</li>
+                                <li>Количество игровых мест — 5 мест в зале.</li>
+                                <li>Формат — можно играть как в одиночку, так и собирать команду (до 5 человек одновременно).</li>
+                            </ul>
+                            <p style="font-size:13px; color:#94a3b8;">📌 Обратите внимание: при игре в кооперативе внутри нашего парка количество участников ограничено количеством свободных игровых мест (максимум 5 человек одновременно). Для игр, рассчитанных на большее число игроков, вы будете просто подключаться к внешним онлайн-серверам.</p>
                             
-                            <div class="divider">👥 Кооперативные игры (для компаний)</div>
-                            <p>Мы разделили игры по максимальному количеству участников, чтобы вам было удобнее выбирать:<br>
-                            • <strong>До 2 игроков:</strong> All-in-One Sports VR, Arizona Sunshine II, Propagation, Serious Sam: The last hope.<br>
-                            • <strong>До 3 игроков:</strong> Dungeons of Eternity.<br>
-                            • <strong>До 4 игроков:</strong> After the fall, Arizona Sunshine II, Cook-out: A sandwich tale, Devour, Elven assassin, Loco Dojo, Phasmophobia, Raw Data, Sairento VR.<br>
-                            • <strong>До 5 игроков:</strong> Bear saber, Late for work, Walkabout Mini Golf VR, Gorilla tag, Pavlov.</p>
+                            <div class="section-title" style="margin-top:20px; color:#3b82f6;">👥 Кооперативные игры (для компаний):</div>
+                            <ul>
+                                <li><strong>До 2 игроков:</strong> All-in-One Sports VR, Arizona Sunshine II, Propagation, Serious Sam: The last hope.</li>
+                                <li><strong>До 3 игроков:</strong> Dungeons of Eternity.</li>
+                                <li><strong>До 4 игроков:</strong> After the fall, Arizona Sunshine II, Cook-out: A sandwich tale, Devour, Elven assassin, Loco Dojo, Phasmophobia, Raw Data, Sairento VR.</li>
+                                <li><strong>До 5 игроков:</strong> Bear saber, Late for work, Walkabout Mini Golf VR, Gorilla tag, Pavlov.</li>
+                            </ul>
                             
-                            <div class="divider">🎮 Одиночные игры (для полного погружения)</div>
-                            <p>Отличный выбор, чтобы остаться один на один с виртуальным миром:</p>
-                            <p>• <strong>Экшены, шутеры и арены:</strong> Blade & Sorcery, Bonelab, Gorn 2, Guns'n'stories bulletproof, Hellsplit: Arena, Space Pirate Trainer, Superhot, Pavlov.<br>
-                            • <strong>Сюжет и глубокое погружение:</strong> Half-Life: Alyx, The Elder Scrolls V: Skyrim VR, Batman: Arkham VR, The Room VR: A Dark Matter.<br>
-                            • <strong>Симуляторы и юмор:</strong> I am cat, Job simulator, Vacation Simulator, Virtual virtual reality, Surgeon simulator, Rick and Morty: Virtual Rick-ality, Santa Simulator.<br>
-                            • <strong>Аркады и драйв:</strong> Fruit ninja, Pistol whip, Richie's Plank Experience, Fancy skiing VR, Adventure climb vr, Angry Birds Isle of Pigs.<br>
-                            • <strong>Хорроры:</strong> Five Nights At Freddy.<br>
-                            • <strong>Творчество и атмосфера:</strong> Tilt brush, Deism, Maestro, Trover Saves the Universe, The Wizards - Enhanced Edition, Pirates VR: Jolly Roger, Budget cuts.</p>
+                            <div class="section-title" style="margin-top:20px; color:#3b82f6;">🎮 Одиночные игры:</div>
+                            <ul>
+                                <li><strong>Экшены и шутеры:</strong> Blade & Sorcery, Bonelab, Gorn 2, Guns'n'stories bulletproof, Hellsplit: Arena, Space Pirate Trainer, Superhot, Pavlov.</li>
+                                <li><strong>Сюжет и погружение:</strong> Half-Life: Alyx, The Elder Scrolls V: Skyrim VR, Batman: Arkham VR, The Room VR: A Dark Matter.</li>
+                                <li><strong>Симуляторы и юмор:</strong> I am cat, Job simulator, Vacation Simulator, Virtual virtual reality, Surgeon simulator, Rick and Morty: Virtual Rick-ality, Santa Simulator.</li>
+                                <li><strong>Аркады и драйв:</strong> Fruit ninja, Pistol whip, Richie's Plank Experience, Fancy skiing VR, Adventure climb vr, Angry Birds Isle of Pigs.</li>
+                                <li><strong>Хорроры:</strong> Five Nights At Freddy.</li>
+                                <li><strong>Творчество и атмосфера:</strong> Tilt brush, Deism, Maestro, Trover Saves the Universe, The Wizards - Enhanced Edition, Pirates VR: Jolly Roger, Budget cuts.</li>
+                            </ul>
                             
-                            <div class="divider">⏱️ Как выбрать длительность сеанса</div>
-                            <p>• <strong>15 минут</strong> — быстрая разминка, знакомство с VR или одна короткая миссия.<br>
-                            • <strong>30 минут</strong> — оптимальный вариант для большинства динамичных игр и компаний.<br>
-                            • <strong>60 минут</strong> — идеальное время для полного погружения в масштабные сюжетные игры (Half-Life: Alyx, Skyrim VR и другие).<br>
-                            Выбирайте под свой настрой, бронируйте место и приходите в гости! 🚀</p>
+                            <div class="section-title" style="margin-top:20px; color:#3b82f6;">⏱️ Как выбрать длительность сеанса:</div>
+                            <ul>
+                                <li><strong>15 минут</strong> — быстрая разминка или одна короткая миссия.</li>
+                                <li><strong>30 минут</strong> — оптимальный вариант для большинства динамичных игр и компаний.</li>
+                                <li><strong>60 минут</strong> — идеальное время для масштабных сюжетных игр (Half-Life: Alyx, Skyrim VR).</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -349,8 +451,8 @@
     <!-- 3. ЗОНА ПИКСЕЛЬ -->
     <div class="accordion-item">
         <button class="accordion-header" type="button">
-            <span class="tg-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px; height:24px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            <span class="vector-icon icon-pixel">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
             </span>
             <span class="header-title">Зона Пиксель</span>
             <span class="arrow">▼</span>
@@ -358,22 +460,36 @@
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://cdn.phototourl.com/free/2026-06-15-332f5c3f-3d49-46f4-b7da-4002ff1d3092.webp" class="block-image" alt="Пиксель">
-                <p>Зона Пиксель - это подвижная интерактивная зона со светящимся полом. Главная задача: быстро наступать на безопасные плитки и ловко обходить препятствия. Отличный выбор для активного и динамичного отдыха!</p>
+                <p>Зона Пиксель — это подвижная интерактивная зона со светящимся полом. Главная задача: быстро наступать на безопасные плитки и ловко обходить препятствия. Отличный выбор для активного и динамичного отдыха!</p>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>ПОПУЛЯРНЫЕ РЕЖИМЫ ИГРЫ:</strong></p>
-                <p>• 📼 Скакалка - перепрыгивайте через движущиеся световые полосы. Задача команды - как можно меньше наступать на «опасные» линии.<br>
-                • 📼 Собери свой цвет - супердинамичный режим, где нужно наперегонки ловить плитки цвета своей команды.<br>
-                • 📼 Канат - виртуальное перетягивание. Нажимайте на свои цвета быстрее соперников, чтобы перетянуть победу на свою сторону!</p>
+                <div class="divider"></div>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>💳 СТОИМОСТЬ УЧАСТИЯ:</strong><br>
-                Стоимость участия (за 1 человека): <br>
-                • 15 мин: Будни - 700 ₽    | Выходные - 1 000 ₽ <br>
-                • 30 мин: Будни - 1 000 ₽ | Выходные - 1 500 ₽ <br>
-                • 60 мин: Будни - 1 500 ₽ | Выходные - 2 200 ₽</p>
-                <p><strong>Хотите играть только своей компанией? (Выкуп зоны):</strong><br>
-                Будни - 8 000 ₽ | Выходные - 12 000 ₽</p>
+                <div class="section-title">ПОПУЛЯРНЫЕ РЕЖИМЫ ИГРЫ:</div>
+                <ul>
+                    <li><strong>Скакалка</strong> — перепрыгивайте через движущиеся световые полосы. Задача команды — как можно меньше наступать на «опасные» линии.</li>
+                    <li><strong>Собери свой цвет</strong> — супердинамичный режим, где нужно наперегонки ловить плитки цвета своей команды.</li>
+                    <li><strong>Канат</strong> — виртуальное перетягивание. Нажимайте на свои цвета быстрее соперников, чтобы перетянуть победу на свою сторону!</li>
+                </ul>
+                
+                <div class="divider"></div>
+                
+                <div class="section-title">СТОИМОСТЬ УЧАСТИЯ (за 1 человека):</div>
+                <div class="price-grid green-border">
+                    <div class="price-label">15 минут:</div>
+                    <div class="price-value">Будни — 700 ₽ &nbsp;|&nbsp; Выходные — 1 000 ₽</div>
+                    <div class="price-label">30 минут:</div>
+                    <div class="price-value">Будни — 1 000 ₽ &nbsp;|&nbsp; Выходные — 1 500 ₽</div>
+                    <div class="price-label">60 минут:</div>
+                    <div class="price-value">Будни — 1 500 ₽ &nbsp;|&nbsp; Выходные — 2 200 ₽</div>
+                </div>
+                
+                <p><strong>Хотите играть только своей компанией? (Выкуп зоны):</strong></p>
+                <div class="price-grid green-border">
+                    <div class="price-label">Будни:</div>
+                    <div class="price-value">8 000 ₽</div>
+                    <div class="price-label">Выходные:</div>
+                    <div class="price-value">12 000 ₽</div>
+                </div>
             </div>
         </div>
     </div>
@@ -381,8 +497,8 @@
     <!-- 4. ЗОНА АТТРАКЦИОНОВ -->
     <div class="accordion-item">
         <button class="accordion-header" type="button">
-            <span class="tg-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#00a8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px; height:24px;"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="1"/><path d="M12 6v5M7 15h.01M17 15h.01"/></svg>
+            <span class="vector-icon icon-attractions">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="1"/><path d="M12 6v5M7 15h.01M17 15h.01"/></svg>
             </span>
             <span class="header-title">Зона Аттракционов</span>
             <span class="arrow">▼</span>
@@ -390,31 +506,54 @@
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://cdn.phototourl.com/free/2026-06-15-309285f2-29ac-43a1-b36d-2b65c7853e7f.webp" class="block-image" alt="Аттракционы">
-                <p>Зона Аттракционов — коллекция продвинутых симуляторов с подвижными платформами, гидравликой и полным погружением в игру! <br>
-                (Стоимость указана за 1 участника)</p>
+                <p>Зона Аттракционов — коллекция продвинутых симуляторов с подвижными платформами, гидравликой и полным погружением в игру!<br>
+                <span style="color:#94a3b8; font-size:14px;">(Стоимость указана за 1 участника)</span></p>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>🙂 Капсулы (спокойный симулятор американских горок, приключения и хорроры)</strong><br>
-                Будни: 770 ₽ | Выходные: 1 100 ₽</p>
+                <div class="divider"></div>
                 
-                <p style="margin-top:15px;"><strong>🔫 Тир (статичный симулятор: сражения с динозаврами, зомби или крысами-пиратами)</strong><br>
-                Будни: 350 ₽ | Выходные: 500 ₽</p>
+                <p><strong>Капсулы</strong> (спокойный симулятор американских горок, приключения и хорроры)</p>
+                <div class="price-grid purple-border">
+                    <div class="price-label">Прайс:</div>
+                    <div class="price-value">Будни: 770 ₽ &nbsp;|&nbsp; Выходные: 1 100 ₽</div>
+                </div>
                 
-                <p style="margin-top:15px;"><strong>🚗 Автосимуляторы (гонки на гидравлической платформе с полным погружением)</strong><br>
-                Будни: 15 мин — 700 ₽ / 30 мин — 1 260 ₽<br>
-                Выходные: 15 мин — 1 000 ₽ / 30 мин — 1 800 ₽</p>
+                <p><strong>Тир</strong> (статичный симулятор: сражения с динозаврами, зомби или крысами-пиратами)</p>
+                <div class="price-grid purple-border">
+                    <div class="price-label">Прайс:</div>
+                    <div class="price-value">Будни: 350 ₽ &nbsp;|&nbsp; Выходные: 500 ₽</div>
+                </div>
                 
-                <p style="margin-top:15px;"><strong>🤖 Мотосимулятор (динамичный байк с интерактивным рулём)</strong><br>
-                Будни: 770 ₽ | Выходные: 1 100 ₽</p>
+                <p><strong>Автосимуляторы</strong> (гонки на гидравлической платформе с полным погружением)</p>
+                <div class="price-grid purple-border">
+                    <div class="price-label">Будни:</div>
+                    <div class="price-value">15 мин — 700 ₽ &nbsp;/&nbsp; 30 мин — 1 260 ₽</div>
+                    <div class="price-label">Выходные:</div>
+                    <div class="price-value">15 мин — 1 000 ₽ &nbsp;/&nbsp; 30 мин — 1 800 ₽</div>
+                </div>
                 
-                <p style="margin-top:15px;"><strong>🏖 Лыжи (лыжные гонки, где вы управляете движениями тела)</strong><br>
-                Будни: 980 ₽ | Выходные: 1 400 ₽</p>
+                <p><strong>Мотосимулятор</strong> (динамичный байк с интерактивным рулём)</p>
+                <div class="price-grid purple-border">
+                    <div class="price-label">Прайс:</div>
+                    <div class="price-value">Будни: 770 ₽ &nbsp;|&nbsp; Выходные: 1 100 ₽</div>
+                </div>
                 
-                <p style="margin-top:15px;"><strong>📍 Летающая тарелка (симулятор гигантских качелей, платформа крутится на 360°, до 5 человек)</strong><br>
-                Будни: 1 400 ₽ | Выходные: 2 000 ₽</p>
+                <p><strong>Лыжи</strong> (лыжные гонки, где вы управляете движениями тела)</p>
+                <div class="price-grid purple-border">
+                    <div class="price-label">Прайс:</div>
+                    <div class="price-value">Будни: 980 ₽ &nbsp;|&nbsp; Выходные: 1 400 ₽</div>
+                </div>
                 
-                <p style="margin-top:15px;"><strong>• 🎙 Экстрим (вертикальная подвижная платформа для максимального ощущения скорости)</strong><br>
-                Будни: 910 ₽ | Выходные: 1 300 ₽</p>
+                <p><strong>Летающая тарелка</strong> (симулятор гигантских качелей, платформа крутится на 360°, до 5 человек)</p>
+                <div class="price-grid purple-border">
+                    <div class="price-label">Прайс:</div>
+                    <div class="price-value">Будни: 1 400 ₽ &nbsp;|&nbsp; Выходные: 2 000 ₽</div>
+                </div>
+                
+                <p><strong>Экстрим</strong> (вертикальная подвижная платформа для максимального ощущения скорости)</p>
+                <div class="price-grid purple-border">
+                    <div class="price-label">Прайс:</div>
+                    <div class="price-value">Будни: 910 ₽ &nbsp;|&nbsp; Выходные: 1 300 ₽</div>
+                </div>
             </div>
         </div>
     </div>
@@ -422,8 +561,8 @@
     <!-- 5. КОМБО-НАБОРЫ -->
     <div class="accordion-item">
         <button class="accordion-header" type="button">
-            <span class="tg-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#ff9f43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px; height:24px;"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M3 20h18"/></svg>
+            <span class="vector-icon icon-combo">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M3 20h18"/></svg>
             </span>
             <span class="header-title">Комбо-наборы</span>
             <span class="arrow">▼</span>
@@ -433,74 +572,97 @@
                 <img src="https://optim.tildacdn.com/tild3465-6530-4061-a562-346466633337/-/resize/465x/-/format/webp/photo-057.jpg.webp" class="block-image" alt="Комбо">
                 <p>Выбирайте идеальный формат погружения для себя, компании или всей семьи! Мы собрали лучшие активности парка в выгодные пакетные предложения.</p>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>🗺 Экспедиция</strong><br>
-                Идеально для глубокого погружения и знакомства с главными игровыми зонами.<br>
-                • Арена виртуальной реальности — 1 час<br>
-                • Зона Ауры — 1 час<br>
-                Стоимость: <br>
-                • Будни: 3 000 ₽ <br>
-                • Выходные и праздники: 4 000 ₽</p>
+                <div class="divider"></div>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>⚡️ Кардио</strong><br>
-                Динамичный и активный микс для тех, кто любит много двигаться.<br>
-                • Арена виртуальной реальности — 30 минут<br>
-                • Интерактив Пиксели — 30 минут<br>
-                Стоимость: <br>
-                • Будни: 1 800 ₽ <br>
-                • Выходные и праздники: 2 500 ₽</p>
+                <p><strong>🗺 Экспедиция</strong><br><span style="font-size:14px; color:#94a3b8;">Идеально для глубокого погружения и знакомства с главными зонами.</span></p>
+                <ul>
+                    <li>Арена виртуальной реальности — 1 час</li>
+                    <li>Зона Ауры — 1 час</li>
+                </ul>
+                <div class="price-grid orange-border">
+                    <div class="price-label">Будни:</div>
+                    <div class="price-value">3 000 ₽</div>
+                    <div class="price-label">Выходные:</div>
+                    <div class="price-value">4 000 ₽</div>
+                </div>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>🚀 Квадро</strong><br>
-                Максимум разнообразия: от шутеров и свободного перемещения до драйвовых симуляторов.<br>
-                • Арена виртуальной реальности — 30 минут<br>
-                • Зона Ауры — 30 минут<br>
-                • Капсулы — 1 катание<br>
-                • Автосимулятор — 15 минут<br>
-                Стоимость: <br>
-                • Будни: 3 200 ₽ <br>
-                • Выходные и праздники: 4 500 ₽</p>
+                <p><strong>⚡️ Кардио</strong><br><span style="font-size:14px; color:#94a3b8;">Динамичный и активный микс для тех, кто любит много двигаться.</span></p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут</li>
+                    <li>Интерактив Пиксели — 30 минут</li>
+                </ul>
+                <div class="price-grid orange-border">
+                    <div class="price-label">Будни:</div>
+                    <div class="price-value">1 800 ₽</div>
+                    <div class="price-label">Выходные:</div>
+                    <div class="price-value">2 500 ₽</div>
+                </div>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>🛸 ВР Сквад 4</strong><br>
-                Готовое командное приключение для компании из 4 человек.<br>
-                • Арена виртуальной реальности — 30 минут (для 4 игроков)<br>
-                • НЛО (Летающая тарелка) — 1 сеанс (для 4 игроков)<br>
-                Стоимость: <br>
-                • Будни: 8 300 ₽ <br>
-                • Выходные и праздники: 12 000 ₽</p>
+                <p><strong>🚀 Квадро</strong><br><span style="font-size:14px; color:#94a3b8;">Максимум разнообразия: от шутеров до драйвовых симуляторов.</span></p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут</li>
+                    <li>Зона Ауры — 30 минут</li>
+                    <li>Капсулы — 1 катание</li>
+                    <li>Автосимулятор — 15 минут</li>
+                </ul>
+                <div class="price-grid orange-border">
+                    <div class="price-label">Будни:</div>
+                    <div class="price-value">3 200 ₽</div>
+                    <div class="price-label">Выходные:</div>
+                    <div class="price-value">4 500 ₽</div>
+                </div>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>🛸 ВР Сквад 5</strong><br>
-                Идеальный сбор и совместный полет для компании из 5 человек.<br>
-                • Арена виртуальной реальности — 30 минут (для 5 игроков)<br>
-                • НЛО (Летающая тарелка) — 1 сеанс (для 5 игроков)<br>
-                Стоимость: <br>
-                • Будни: 10 000 ₽ <br>
-                • Выходные и праздники: 14 500 ₽</p>
+                <p><strong>🛸 ВР Сквад 4</strong><br><span style="font-size:14px; color:#94a3b8;">Готовое командное приключение для компании из 4 человек.</span></p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут (для 4 игроков)</li>
+                    <li>НЛО (Летающая тарелка) — 1 сеанс (для 4 игроков)</li>
+                </ul>
+                <div class="price-grid orange-border">
+                    <div class="price-label">Будни:</div>
+                    <div class="price-value">8 300 ₽</div>
+                    <div class="price-label">Выходные:</div>
+                    <div class="price-value">12 000 ₽</div>
+                </div>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>🏆 Марафон</strong><br>
-                Большой тест-драйв всех главных фишек парка для тех, кто хочет попробовать всё.<br>
-                • Арена виртуальной реальности — 30 минут<br>
-                • Зона Ауры — 30 минут<br>
-                • Интерактив Пиксели — 15 минут<br>
-                • Аттракционы — по 1 катанию на каждом симуляторе парка<br>
-                Стоимость: <br>
-                • Будни: 7 000 ₽ <br>
-                • Выходные и праздники: 10 000 ₽</p>
+                <p><strong>🛸 ВР Сквад 5</strong><br><span style="font-size:14px; color:#94a3b8;">Идеальный сбор и совместный полет для компании из 5 человек.</span></p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут (для 5 игроков)</li>
+                    <li>НЛО (Летающая тарелка) — 1 сеанс (для 5 игроков)</li>
+                </ul>
+                <div class="price-grid orange-border">
+                    <div class="price-label">Будни:</div>
+                    <div class="price-value">10 000 ₽</div>
+                    <div class="price-label">Выходные:</div>
+                    <div class="price-value">14 500 ₽</div>
+                </div>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><strong>🌪 Экстрим</strong><br>
-                Чистый адреналин и полное погружение на динамических платформах.<br>
-                • 🕹 Зона Аттракционов — по 1 катанию на каждом симуляторе парка (Капсулы, Летающая тарелка, Горнолыжный, Экстрим, Тир, Мото- и Автосимуляторы).<br>
-                Стоимость: <br>
-                • Будни: 4 500 ₽ <br>
-                • Выходные и праздники: 6 000 ₽</p>
+                <p><strong>🏆 Марафон</strong><br><span style="font-size:14px; color:#94a3b8;">Большой тест-драйв всех главных фишек парка.</span></p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут</li>
+                    <li>Зона Ауры — 30 минут</li>
+                    <li>Интерактив Пиксели — 15 минут</li>
+                    <li>Аттракционы — по 1 катанию на каждом симуляторе парка</li>
+                </ul>
+                <div class="price-grid orange-border">
+                    <div class="price-label">Будни:</div>
+                    <div class="price-value">7 000 ₽</div>
+                    <div class="price-label">Выходные:</div>
+                    <div class="price-value">10 000 ₽</div>
+                </div>
                 
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p>💡 Забронировать комбо-набор или задать вопрос можно напрямую нашему администратору в мессенджере и при посещении парка!</p>
+                <p><strong>🌪 Экстрим</strong><br><span style="font-size:14px; color:#94a3b8;">Чистый адреналин и полное погружение на динамических платформах.</span></p>
+                <ul>
+                    <li>По 1 катанию на каждом симуляторе парка (Капсулы, Летающая тарелка, Горнолыжный, Экстрим, Тир, Мото- и Автосимуляторы).</li>
+                </ul>
+                <div class="price-grid orange-border">
+                    <div class="price-label">Будни:</div>
+                    <div class="price-value">4 500 ₽</div>
+                    <div class="price-label">Выходные:</div>
+                    <div class="price-value">6 000 ₽</div>
+                </div>
+                
+                <div class="divider"></div>
+                <p style="text-align: center; color: #ff9f43; font-weight: 600;">💡 Забронировать комбо-набор или задать вопрос можно напрямую нашему администратору в мессенджере и при посещении парка!</p>
             </div>
         </div>
     </div>
@@ -508,13 +670,11 @@
 </div>
 
 <script>
-    // Скрипт основного аккордеона
     document.querySelectorAll('.accordion-header').forEach(button => {
         button.addEventListener('click', () => {
             const accordionItem = button.parentElement;
             const content = button.nextElementSibling;
             
-            // Закрываем другие вкладки
             document.querySelectorAll('.accordion-item').forEach(item => {
                 if (item !== accordionItem) {
                     item.classList.remove('active');
@@ -523,7 +683,6 @@
                 }
             });
 
-            // Открываем/закрываем текущую
             accordionItem.classList.toggle('active');
             if (accordionItem.classList.contains('active')) {
                 content.style.maxHeight = content.scrollHeight + "px";
@@ -533,11 +692,10 @@
         });
     });
 
-    // Внутренний аккордеон для игр в Ауре
     const innerHeader = document.querySelector('.inner-header');
     if(innerHeader) {
         innerHeader.addEventListener('click', (e) => {
-            e.stopPropagation(); // Предотвращаем закрытие основного блока
+            e.stopPropagation();
             const content = innerHeader.nextElementSibling;
             const parentContent = innerHeader.closest('.accordion-content');
             
