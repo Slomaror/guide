@@ -22,17 +22,18 @@
         }
         .container { max-width: 500px; margin: 0 auto; }
         
-        /* Стили шапки по запросу */
+        /* Шапка */
         .header { text-align: left; margin-bottom: 25px; padding-left: 5px; }
         .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 4px; color: #fff; }
         .header .sub-line { 
             font-size: 14px; 
             color: var(--muted-text); 
             display: block; 
-            text-indent: 15px; /* Красная строка */
+            text-indent: 15px; 
             margin-bottom: 2px;
         }
         
+        /* Аккордеон */
         .accordion-item {
             background-color: var(--card-bg);
             border-radius: 12px;
@@ -46,24 +47,44 @@
             border: none;
             color: var(--text-color);
             text-align: left;
-            padding: 16px;
+            padding: 14px 16px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             outline: none;
         }
-        .accordion-header::after {
-            content: '▼';
-            font-size: 12px;
+        
+        /* Стилизация иконок под Translucent Pack */
+        .tg-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            margin-right: 12px;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .icon-red { background-color: rgba(235, 94, 85, 0.15); color: #eb5e55; }
+        .icon-blue { background-color: rgba(84, 160, 255, 0.15); color: #54a0ff; }
+        .icon-green { background-color: rgba(46, 213, 115, 0.15); color: #2ed573; }
+        .icon-orange { background-color: rgba(255, 159, 67, 0.15); color: #ff9f43; }
+        .icon-purple { background-color: rgba(108, 92, 231, 0.15); color: #6c5ce7; }
+        
+        .header-title { flex-grow: 1; }
+        .arrow {
+            font-size: 11px;
             color: var(--muted-text);
             transition: transform 0.2s;
+            margin-left: 8px;
         }
-        .accordion-item.active .accordion-header::after {
+        .accordion-item.active .arrow {
             transform: rotate(180deg);
         }
+        
         .accordion-content {
             max-height: 0;
             overflow: hidden;
@@ -75,6 +96,36 @@
             font-size: 14px;
             color: #e2e4f0;
         }
+        
+        /* Внутренний спойлер для Каталога Игр */
+        .inner-spoiler {
+            margin-top: 15px;
+            border: 1px dashed #343854;
+            border-radius: 8px;
+            background: rgba(13, 14, 21, 0.4);
+        }
+        .inner-header {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #54a0ff;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .inner-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.25s ease-out;
+        }
+        .inner-body { padding: 0 12px 12px 12px; font-size: 13.5px; }
+
+        /* Оформление контента */
         .img-preview {
             width: 100%;
             height: auto;
@@ -84,9 +135,9 @@
             margin-bottom: 15px;
             display: block;
         }
-        .accordion-body p { margin-bottom: 12px; }
-        .accordion-body ul { margin-bottom: 15px; padding-left: 20px; }
-        .accordion-body li { margin-bottom: 6px; }
+        .accordion-body p, .inner-body p { margin-bottom: 12px; }
+        .accordion-body ul, .inner-body ul { margin-bottom: 15px; padding-left: 20px; }
+        .accordion-body li, .inner-body li { margin-bottom: 6px; }
         .divider { 
             color: #4a4e69; 
             margin: 15px 0; 
@@ -94,21 +145,8 @@
             letter-spacing: 2px;
             font-size: 12px;
         }
-        .highlight { color: #55efc4; font-weight: bold; }
-        .price-block { background: #23273a; padding: 12px; border-radius: 8px; margin-top: 10px; }
-        .btn-link {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            margin-top: 10px;
-            font-size: 14px;
-            text-align: center;
-            width: 100%;
-        }
+        .highlight { color: #55efc4; font-weight: bold; margin-top: 10px; display: block; }
+        .price-block { background: #23273a; padding: 12px; border-radius: 8px; margin: 12px 0; }
     </style>
 </head>
 <body>
@@ -123,7 +161,11 @@
 
     <!-- 1️⃣ VR-Арена -->
     <div class="accordion-item">
-        <button class="accordion-header">1️⃣ VR-Арена</button>
+        <button class="accordion-header">
+            <span class="tg-icon icon-red">🎮</span>
+            <span class="header-title">1️⃣ VR-Арена</span>
+            <span class="arrow">▼</span>
+        </button>
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://optim.tildacdn.com/tild3965-3765-4932-a132-373639343164/-/resize/465x/-/format/webp/photo-102.jpg.webp" class="img-preview" alt="VR-Арена">
@@ -167,33 +209,100 @@
         </div>
     </div>
 
-    <!-- 2️⃣ Зона Ауры -->
+    <!-- 2️⃣ Зона Ауры + Каталог -->
     <div class="accordion-item">
-        <button class="accordion-header">2️⃣ Зона Ауры</button>
+        <button class="accordion-header">
+            <span class="tg-icon icon-blue">🌐</span>
+            <span class="header-title">2️⃣ Зона Ауры</span>
+            <span class="arrow">▼</span>
+        </button>
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://cdn.phototourl.com/free/2026-06-15-3766765b-ad90-41e3-b814-022cc53dbbdb.jpg" class="img-preview" alt="Зона Ауры">
-                <p>Индивидуальные игровые зоны со шлемами высокого разрешения. Огромное количество миров, симуляторов и квестов на любой вкус и возраст.</p>
-                <p><em>[Сюда вставим текст про Зону Ауры]</em></p>
-            </div>
-        </div>
-    </div>
+                
+                <p><strong>Зона Ауры</strong> - это классическая виртуальная реальность, где вы управляете персонажем с помощью контроллеров. Вас ждут захватывающие кооперативные приключения, атмосферные хорроры, весёлые аркады и расслабляющие миры. Мы с радостью подберём идеальный вариант под ваш вкус или пришлём список игр нужного жанра!</p>
+                
+                <p>👥 <strong>На локации:</strong> до 5 участников одновременно.</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <div class="price-block">
+                    <p>💳 <strong>СТОИМОСТЬ УЧАСТИЯ (с человека):</strong></p>
+                    <ul>
+                        <li>15 мин: Будни — 980 ₽ | Выходные — 1 400 ₽</li>
+                        <li>30 мин: Будни — 1 400 ₽ | Выходные — 2 000 ₽</li>
+                        <li>60 мин: Будни — 1 820 ₽ | Выходные — 2 600 ₽</li>
+                    </ul>
+                </div>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <p>ℹ️ Хотите посмотреть полный каталог игр или выбрать жанр? Просто напишите нам в этот чат — мы всё пришлём! ❤️</p>
 
-    <!-- 🎮 Каталог игр -->
-    <div class="accordion-item">
-        <button class="accordion-header">🎮 Каталог игр Зоны Ауры</button>
-        <div class="accordion-content">
-            <div class="accordion-body">
-                <img src="https://cdn.phototourl.com/free/2026-06-15-992e81d1-70ce-4599-a29e-7971645004b8.jpg" class="img-preview" alt="Каталог игр">
-                <p><strong>Во что поиграть в одиночку и с друзьями:</strong></p>
-                <p><em>[Сюда вставим списки игр]</em></p>
+                <!-- Вложенный каталог игр -->
+                <div class="inner-spoiler">
+                    <button class="inner-header" type="button">
+                        <span>📖 Открыть каталог игр и форматы сеансов</span>
+                        <span class="inner-arrow">▼</span>
+                    </button>
+                    <div class="inner-content">
+                        <div class="inner-body">
+                            <div class="divider"></div>
+                            <img src="https://cdn.phototourl.com/free/2026-06-15-992e81d1-70ce-4599-a29e-7971645004b8.jpg" class="img-preview" alt="Каталог игр">
+                            <p><strong>Погрузитесь в виртуальную реальность: как выбрать игру и формат визита</strong></p>
+                            <p>В нашем парке можно как погрузиться в атмосферное одиночное приключение, так и весело провести время с компанией. Мы предлагаем заранее определиться с тем, во что окунуться во время посещения. Так вы проведёте время с максимальной пользой, заранее зная, чего требует душа.</p>
+                            
+                            <p class="highlight">📌 Важно знать перед визитом</p>
+                            <ul>
+                                <li>Длительность сеансов — на выбор: 15, 30 или 60 минут.</li>
+                                <li>Количество игровых мест — 5 мест в зале.</li>
+                                <li>Формат — можно играть как в одиночку, так и собирать команду (до 5 человек одновременно).</li>
+                            </ul>
+                            <p><small>Обратите внимание: при игре в кооперативе внутри нашего парка количество участников ограничено количеством свободных игровых мест (максимум 5 человек одновременно). Для игр, рассчитанных на большее число игроков, вы будете просто подключаться к внешним онлайн-серверам.</small></p>
+                            
+                            <p class="highlight">👥 Кооперативные игры (для компаний)</p>
+                            <p>Мы разделили игры по максимальному количеству участников, чтобы вам было удобнее выбирать:</p>
+                            <ul>
+                                <li><strong>До 2 игроков:</strong> All-in-One Sports VR, Arizona Sunshine II, Propagation, Serious Sam: The last hope.</li>
+                                <li><strong>До 3 игроков:</strong> Dungeons of Eternity.</li>
+                                <li><strong>До 4 игроков:</strong> After the fall, Arizona Sunshine II, Cook-out: A sandwich tale, Devour, Elven assassin, Loco Dojo, Phasmophobia, Raw Data, Sairento VR.</li>
+                                <li><strong>До 5 игроков:</strong> Bear saber, Late for work, Walkabout Mini Golf VR, Gorilla tag, Pavlov.</li>
+                            </ul>
+                            
+                            <p class="highlight">🎮 Одиночные игры (для полного погружения)</p>
+                            <p>Отличный выбор, чтобы остаться один на один с виртуальным миром:</p>
+                            <ul>
+                                <li><strong>Экшены, шутеры и арены:</strong> Blade & Sorcery, Bonelab, Gorn 2, Guns'n'stories bulletproof, Hellsplit: Arena, Space Pirate Trainer, Superhot, Pavlov.</li>
+                                <li><strong>Сюжет и глубокое погружение:</strong> Half-Life: Alyx, The Elder Scrolls V: Skyrim VR, Batman: Arkham VR, The Room VR: A Dark Matter.</li>
+                                <li><strong>Симуляторы и юмор:</strong> I am cat, Job simulator, Vacation Simulator, Virtual virtual reality, Surgeon simulator, Rick and Morty: Virtual Rick-ality, Santa Simulator.</li>
+                                <li><strong>Аркады и драйв:</strong> Fruit ninja, Pistol whip, Richie's Plank Experience, Fancy skiing VR, Adventure climb vr, Angry Birds Isle of Pigs.</li>
+                                <li><strong>Хорроры:</strong> Five Nights At Freddy.</li>
+                                <li><strong>Творчество и атмосфера:</strong> Tilt brush, Deism, Maestro, Trover Saves the Universe, The Wizards - Enhanced Edition, Pirates VR: Jolly Roger, Budget cuts.</li>
+                            </ul>
+                            
+                            <p class="highlight">⏱️ Как выбрать длительность сеанса</p>
+                            <ul>
+                                <li><strong>15 минут</strong> — быстрая разминка, знакомство с VR или одна короткая миссия.</li>
+                                <li><strong>30 минут</strong> — оптимальный вариант для большинства динамичных игр и компаний.</li>
+                                <li><strong>60 минут</strong> — идеальное время для полного погружения в масштабные сюжетные игры (Half-Life: Alyx, Skyrim VR и другие).</li>
+                            </ul>
+                            
+                            <p>Выбирайте под свой настрой, бронируйте место и приходите в гости! 🚀</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 
     <!-- 3️⃣ Пиксель -->
     <div class="accordion-item">
-        <button class="accordion-header">3️⃣ Зона Пиксель</button>
+        <button class="accordion-header">
+            <span class="tg-icon icon-green">🟩</span>
+            <span class="header-title">3️⃣ Зона Пиксель</span>
+            <span class="arrow">▼</span>
+        </button>
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://optim.tildacdn.com/tild3939-3130-4162-a135-336435323061/-/format/webp/photo-207_1.jpg.webp" class="img-preview" alt="Пиксель">
@@ -205,7 +314,11 @@
 
     <!-- 4️⃣ Зона аттракционов -->
     <div class="accordion-item">
-        <button class="accordion-header">4️⃣ Зона аттракционов</button>
+        <button class="accordion-header">
+            <span class="tg-icon icon-orange">⚡</span>
+            <span class="header-title">4️⃣ Зона аттракционов</span>
+            <span class="arrow">▼</span>
+        </button>
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://optim.tildacdn.com/tild3037-6261-4334-b565-633434636365/-/format/webp/photo-209.jpg.webp" class="img-preview" alt="Аттракционы">
@@ -217,7 +330,11 @@
 
     <!-- ⭐️ Комбо-наборы -->
     <div class="accordion-item">
-        <button class="accordion-header">⭐️ Комбо-наборы</button>
+        <button class="accordion-header">
+            <span class="tg-icon icon-purple">⭐</span>
+            <span class="header-title">⭐️ Комбо-наборы</span>
+            <span class="arrow">▼</span>
+        </button>
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://optim.tildacdn.com/tild3465-6530-4061-a562-346466633337/-/resize/465x/-/format/webp/photo-057.jpg.webp" class="img-preview" alt="Комбо-наборы">
@@ -229,6 +346,7 @@
 </div>
 
 <script>
+    // Главный аккордеон
     document.querySelectorAll('.accordion-header').forEach(button => {
         button.addEventListener('click', () => {
             const accordionItem = button.parentElement;
@@ -250,6 +368,27 @@
             }
         });
     });
+
+    // Вложенный спойлер каталога
+    const innerHeader = document.querySelector('.inner-header');
+    if(innerHeader) {
+        innerHeader.addEventListener('click', (e) => {
+            e.stopPropagation(); // Чтобы не закрывался основной спойлер
+            const content = innerHeader.nextElementSibling;
+            const parentContent = innerHeader.closest('.accordion-content');
+            const arrow = innerHeader.querySelector('.inner-arrow');
+            
+            if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+                content.style.maxHeight = "0px";
+                arrow.style.transform = "rotate(0deg)";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                // Корректируем высоту главного спойлера, чтобы всё влезло
+                parentContent.style.maxHeight = (parentContent.scrollHeight + content.scrollHeight) + "px";
+                arrow.style.transform = "rotate(180deg)";
+            }
+        });
+    }
 </script>
 
 </body>
