@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Цены и услуги — AURA VR</title>
+    <title>АУРА ИГР — ТРК Европолис</title>
     <style>
-        /* Базовые настройки и адаптивность */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -25,7 +24,7 @@
             position: relative;
         }
 
-        /* ИНТЕРЕСНЫЙ ФОН: Пульсирующие неоновые ауры (Вариант 1) */
+        /* Интерактивный фон «Аура» */
         body::before, body::after {
             content: "";
             position: absolute;
@@ -34,39 +33,60 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            filter: blur(80px);
-            opacity: 0.4;
+            filter: blur(90px);
+            opacity: 0.35;
         }
         body::before {
             background: radial-gradient(circle, #ff9f43 0%, rgba(0,0,0,0) 70%);
             top: -100px;
             left: -150px;
-            animation: pulseAura 10s infinite alternate ease-in-out;
+            animation: pulseAura 12s infinite alternate ease-in-out;
         }
         body::after {
             background: radial-gradient(circle, #00a8ff 0%, rgba(0,0,0,0) 70%);
             bottom: -100px;
             right: -150px;
-            animation: pulseAura 14s infinite alternate-reverse ease-in-out;
+            animation: pulseAura 16s infinite alternate-reverse ease-in-out;
         }
         @keyframes pulseAura {
             0% { transform: scale(1) translate(0, 0); opacity: 0.3; }
-            100% { transform: scale(1.2) translate(30px, 40px); opacity: 0.5; }
+            100% { transform: scale(1.2) translate(40px, 30px); opacity: 0.5; }
         }
 
-        /* Главная шапка страницы */
-        .page-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 30px;
+        /* Центрированная шапка (Пункт 3 и 4) */
+        .brand-header {
             text-align: center;
             position: relative;
             z-index: 1;
+            margin-bottom: 35px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .brand-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .brand-subtitle {
+            font-size: 14px;
+            color: #ff9f43;
+            font-weight: 500;
             letter-spacing: 0.5px;
+            margin-left: 8px;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+        .brand-desc {
+            font-size: 15px;
+            color: #94a3b8;
+            margin-top: 6px;
+            letter-spacing: 0.3px;
         }
 
-        /* Центрированный контейнер для всех вкладок */
+        /* Контейнер вкладок */
         .accordion-container {
             width: 100%;
             max-width: 600px;
@@ -74,33 +94,33 @@
             z-index: 1;
         }
 
-        /* Общие стили для всех карточек аккордеона */
+        /* Карточки зон */
         .accordion-item {
             border: 1px solid rgba(255, 159, 67, 0.15);
-            border-radius: 12px;
-            margin-bottom: 12px;
+            border-radius: 14px;
+            margin-bottom: 14px;
             overflow: hidden;
-            background: rgba(22, 25, 43, 0.75);
+            background: rgba(22, 25, 43, 0.8);
             backdrop-filter: blur(12px);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-            transition: border-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s;
         }
         .accordion-item:hover {
             border-color: rgba(255, 159, 67, 0.35);
         }
 
-        /* Шапка вкладки */
+        /* Кнопка открытия */
         .accordion-header {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px;
+            padding: 18px 22px;
             background: none;
             border: none;
             color: #ffffff;
             cursor: pointer;
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 600;
             text-align: left;
         }
@@ -118,28 +138,51 @@
             color: rgba(255, 159, 67, 0.8);
         }
 
-        /* Контентная часть */
+        /* Раскрывающийся контент */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
         }
         .accordion-body {
-            padding: 20px;
+            padding: 22px;
             border-top: 1px solid rgba(255, 159, 67, 0.1);
             font-size: 15px;
             line-height: 1.6;
+            color: #cbd5e1;
         }
 
-        /* Изображения */
-        .img-preview {
-            width: 100%;
-            height: auto;
+        /* Игры внутри Ауры (Вложенный аккордеон) */
+        .inner-accordion {
+            margin-top: 15px;
+            border: 1px solid rgba(0, 168, 255, 0.2);
             border-radius: 8px;
-            margin-bottom: 15px;
+            background: rgba(11, 13, 25, 0.6);
+        }
+        .inner-header {
+            width: 100%;
+            padding: 12px 15px;
+            background: none;
+            border: none;
+            color: #00a8ff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .inner-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .inner-body {
+            padding: 0 15px 15px 15px;
+            font-size: 14px;
         }
 
-        /* Списки и выравнивание цен по Скрину 2 */
+        /* Списки и ровные цены (Пункт 2) */
         ul {
             list-style: none;
             margin: 12px 0;
@@ -148,7 +191,6 @@
             position: relative;
             padding-left: 20px;
             margin-bottom: 8px;
-            color: #cbd5e1;
         }
         ul li::before {
             content: "•";
@@ -156,15 +198,12 @@
             left: 5px;
             color: #ff9f43;
         }
-
-        /* Специфичный класс для ровных цен (Пиксели) */
         .price-row {
             display: inline-block;
             min-width: 65px;
-            font-weight: 500;
+            font-weight: 600;
+            color: #ffffff;
         }
-
-        /* Текст и разделители */
         .divider {
             color: rgba(255, 159, 67, 0.15);
             margin: 18px 0;
@@ -176,24 +215,32 @@
             font-weight: 600;
             color: #ffffff;
         }
+        .img-preview {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
 
-        /* Мобильная адаптация */
+        /* Адаптация под телефоны */
         @media (max-width: 480px) {
-            body { padding: 20px 12px; }
-            .page-title { font-size: 22px; margin-bottom: 20px; }
-            .accordion-header { padding: 14px 16px; font-size: 15px; }
+            body { padding: 25px 12px; }
+            .brand-title { font-size: 26px; }
+            .brand-subtitle { font-size: 12px; margin-left: 4px; }
+            .accordion-header { padding: 14px 16px; font-size: 16px; }
             .accordion-body { padding: 16px; font-size: 14px; }
         }
 
-        /* Состояние открытой вкладки */
-        .accordion-item.active .arrow {
-            transform: rotate(180deg);
-        }
+        .accordion-item.active .arrow { transform: rotate(180deg); }
     </style>
 </head>
 <body>
 
-<h1 class="page-title">Цены и услуги</h1>
+<div class="brand-header">
+    <div class="brand-title">AURA ИГР</div>
+    <div class="brand-subtitle">ТРК Европолис</div>
+    <div class="brand-desc">Ваш гид в виртуальность</div>
+</div>
 
 <div class="accordion-container">
 
@@ -207,7 +254,12 @@
         </button>
         <div class="accordion-content">
             <div class="accordion-body">
-                <p>Командные сражения со свободным перемещением на огромной площади.</p>
+                <p>Командные сражения со свободным перемещением на площади 250 кв.м. Никаких проводов — только полный драйв, разделение на команды и захватывающие сюжеты для компании до 10 человек.</p>
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                <ul>
+                    <li><span class="price-row">30 мин:</span> Будни — 800 ₽ | Выходные — 1 100 ₽</li>
+                    <li><span class="price-row">60 мин:</span> Будни — 1 300 ₽ | Выходные — 1 800 ₽</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -222,7 +274,27 @@
         </button>
         <div class="accordion-content">
             <div class="accordion-body">
-                <p>Индивидуальные и совместные приключения в лучших VR-играх мира.</p>
+                <p>Индивидуальные игровые зоны со шлемами последнего поколения. Огромный каталог одиночных и совместных игр: от симуляторов работы и кулинарии до шутеров и хорроров.</p>
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                <ul>
+                    <li><span class="price-row">15 мин:</span> Будни — 500 ₽ | Выходные — 650 ₽</li>
+                    <li><span class="price-row">30 мин:</span> Будни — 800 ₽ | Выходные — 1 100 ₽</li>
+                    <li><span class="price-row">60 мин:</span> Будни — 1 300 ₽ | Выходные — 1 800 ₽</li>
+                </ul>
+
+                <div class="inner-accordion">
+                    <button class="inner-header" type="button">
+                        <span>🎮 Во что поиграть? Список игр</span>
+                        <span class="inner-arrow">▼</span>
+                    </button>
+                    <div class="inner-content">
+                        <div class="inner-body">
+                            <p style="margin-top:10px;"><span class="soft-bold">Для новичков:</span> Job Simulator, Beat Saber, Fruit Ninja.</p>
+                            <p style="margin-top:5px;"><span class="soft-bold">Для компаний:</span> Arizona Sunshine, Elven Assassin, Serious Sam VR.</p>
+                            <p style="margin-top:5px;"><span class="soft-bold">Хорроры:</span> Propagation VR, Phasmophobia.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -232,12 +304,12 @@
             <span class="tg-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px; height:24px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
             </span>
-            <span class="header-title">Интерактивный пол «Пиксели»</span>
+            <span class="header-title">Зона Пиксель</span>
             <span class="arrow">▼</span>
         </button>
         <div class="accordion-content">
             <div class="accordion-body">
-                <p>Активная напольная игра, где каждый шаг меняет правила реальности.</p>
+                <p>Уникальный интерактивный пол, состоящий из сотен светящихся неоновых блоков. Ваша задача — наступать на безопасные цвета и избегать ловушек. Идеально развивает реакцию и заменяет полноценную кардио-тренировку!</p>
                 <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
                 <ul>
                     <li><span class="price-row">15 мин:</span> Будни — 700 ₽ | Выходные — 1 000 ₽</li>
@@ -251,121 +323,4 @@
     <div class="accordion-item">
         <button class="accordion-header">
             <span class="tg-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px; height:24px;"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 2v9M8 5h8"/></svg>
-            </span>
-            <span class="header-title">Аттракционы и симуляторы</span>
-            <span class="arrow">▼</span>
-        </button>
-        <div class="accordion-content">
-            <div class="accordion-body">
-                <p>Динамические платформы, авиа- и автосимуляторы для полного погружения.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="accordion-item">
-        <button class="accordion-header">
-            <span class="tg-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#ff9f43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px; height:24px;"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M3 20h18"/></svg>
-            </span>
-            <span class="header-title">Комбо-наборы</span>
-            <span class="arrow">▼</span>
-        </button>
-        <div class="accordion-content">
-            <div class="accordion-body">
-                <img src="https://optim.tildacdn.com/tild3465-6530-4061-a562-346466633337/-/resize/465x/-/format/webp/photo-057.jpg.webp" class="img-preview" alt="Комбо-наборы">
-                <p>Выбирайте идеальный формат погружения для себя, компании или всей семьи! Мы собрали лучшие активности парка в выгодные пакетные предложения.</p>
-                
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><span class="soft-bold">🗺 Экспедиция</span><br>Идеально для глубокого погружения и знакомства с главными игровыми зонами.</p>
-                <ul>
-                    <li>Арена виртуальной реальности — 1 час</li>
-                    <li>Зона Ауры — 1 час</li>
-                </ul>
-                <p><span class="soft-bold">Стоимость:</span><br>Будни: 3 000 ₽ | Выходные и праздники: 4 000 ₽</p>
-                
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><span class="soft-bold">⚡️ Кардио</span><br>Динамичный и активный микс для тех, кто любит много двигаться.</p>
-                <ul>
-                    <li>Арена виртуальной реальности — 30 минут</li>
-                    <li>Интерактив Пиксели — 30 минут</li>
-                </ul>
-                <p><span class="soft-bold">Стоимость:</span><br>Будни: 1 800 ₽ | Выходные и праздники: 2 500 ₽</p>
-                
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><span class="soft-bold">🚀 Квадро</span><br>Максимум разнообразия: от шутеров до драйвовых симуляторов.</p>
-                <ul>
-                    <li>Арена виртуальной реальности — 30 минут</li>
-                    <li>Зона Ауры — 30 минут</li>
-                    <li>Капсулы — 1 катание</li>
-                    <li>Автосимулятор — 15 минут</li>
-                </ul>
-                <p><span class="soft-bold">Стоимость:</span><br>Будни: 3 200 ₽ | Выходные и праздники: 4 500 ₽</p>
-                
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><span class="soft-bold">🛸 ВР Сквад 4</span><br>Готовое командное приключение для компании из 4 человек.</p>
-                <ul>
-                    <li>Арена виртуальной реальности — 30 минут (для 4 игроков)</li>
-                    <li>НЛО (Летающая тарелка) — 1 сеанс (для 4 игроков)</li>
-                </ul>
-                <p><span class="soft-bold">Стоимость:</span><br>Будни: 8 300 ₽ | Выходные и праздники: 12 000 ₽</p>
-                
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><span class="soft-bold">🛸 ВР Сквад 5</span><br>Идеальный сбор и совместный полет для компании из 5 человек.</p>
-                <ul>
-                    <li>Арена виртуальной реальности — 30 минут (для 5 игроков)</li>
-                    <li>НЛО (Летающая тарелка) — 1 сеанс (для 5 игроков)</li>
-                </ul>
-                <p><span class="soft-bold">Стоимость:</span><br>Будни: 10 000 ₽ | Выходные и праздники: 14 500 ₽</p>
-                
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><span class="soft-bold">🏆 Марафон</span><br>Большой тест-драйв всех главных фишек парка для тех, кто хочет попробовать всё.</p>
-                <ul>
-                    <li>Арена виртуальной реальности — 30 минут</li>
-                    <li>Зона Ауры — 30 минут</li>
-                    <li>Интерактив Пиксели — 15 минут</li>
-                    <li>Аттракционы — по 1 катанию на каждом симуляторе парка</li>
-                </ul>
-                <p><span class="soft-bold">Стоимость:</span><br>Будни: 7 000 ₽ | Выходные и праздники: 10 000 ₽</p>
-                
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p><span class="soft-bold">🌪 Экстрим</span><br>Чистый адреналин и полное погружение на динамических платформах.</p>
-                <ul>
-                    <li>🕹 Зона Аттракционов — по 1 катанию на каждом симуляторе парка (Капсулы, Летающая тарелка, Горнолыжный, Экстрим, Тир, Мото- и Автосимуляторы).</li>
-                </ul>
-                <p><span class="soft-bold">Стоимость:</span><br>Будни: 4 500 ₽ | Выходные и праздники: 6 000 ₽</p>
-                
-                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
-                <p>💡 <em>Забронировать комбо-набор или задать вопрос можно напрямую нашему администратору в мессенджере и при посещении парка!</em></p>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<script>
-    document.querySelectorAll('.accordion-header').forEach(button => {
-        button.addEventListener('click', () => {
-            const accordionItem = button.parentElement;
-            const content = button.nextElementSibling;
-            
-            // Закрываем другие открытые вкладки при клике на новую
-            document.querySelectorAll('.accordion-item').forEach(item => {
-                if (item !== accordionItem) {
-                    item.classList.remove('active');
-                    const c = item.querySelector('.accordion-content');
-                    if(c) c.style.maxHeight = "0px";
-                }
-            });
-
-            accordionItem.classList.toggle('active');
-            if (accordionItem.classList.contains('active')) {
-                content.style.maxHeight = content.scrollHeight + "px";
-            } else {
-                content.style.maxHeight = "0px";
-            }
-        });
-    });
-</script>
-</body>
-</html>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#00a8ff" stroke-width="2" stroke-
