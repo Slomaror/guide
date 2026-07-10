@@ -21,9 +21,17 @@
             padding: 20px 15px;
         }
         .container { max-width: 500px; margin: 0 auto; }
-        .header { text-align: center; margin-bottom: 25px; }
-        .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; color: #fff; }
-        .header p { font-size: 14px; color: var(--muted-text); }
+        
+        /* Стили шапки по запросу */
+        .header { text-align: left; margin-bottom: 25px; padding-left: 5px; }
+        .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 4px; color: #fff; }
+        .header .sub-line { 
+            font-size: 14px; 
+            color: var(--muted-text); 
+            display: block; 
+            text-indent: 15px; /* Красная строка */
+            margin-bottom: 2px;
+        }
         
         .accordion-item {
             background-color: var(--card-bg);
@@ -73,20 +81,44 @@
             max-height: 220px;
             object-fit: cover;
             border-radius: 8px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             display: block;
         }
         .accordion-body p { margin-bottom: 12px; }
-        .accordion-body p:last-child { margin-bottom: 0; }
+        .accordion-body ul { margin-bottom: 15px; padding-left: 20px; }
+        .accordion-body li { margin-bottom: 6px; }
+        .divider { 
+            color: #4a4e69; 
+            margin: 15px 0; 
+            text-align: center; 
+            letter-spacing: 2px;
+            font-size: 12px;
+        }
         .highlight { color: #55efc4; font-weight: bold; }
+        .price-block { background: #23273a; padding: 12px; border-radius: 8px; margin-top: 10px; }
+        .btn-link {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Шапка сайта -->
     <div class="header">
-        <h1>Aura VR Park</h1>
-        <p>Ваш быстрый мобильный гид по парку</p>
+        <h1>Аура Игр</h1>
+        <span class="sub-line">ТРК Европолис</span>
+        <span class="sub-line">Ваш интерактивный гид по игровым зонам</span>
     </div>
 
     <!-- 1️⃣ VR-Арена -->
@@ -95,9 +127,42 @@
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://optim.tildacdn.com/tild3965-3765-4932-a132-373639343164/-/resize/465x/-/format/webp/photo-102.jpg.webp" class="img-preview" alt="VR-Арена">
-                <p><strong>Командный шутер со свободным перемещением.</strong></p>
-                <p>Здесь вы полностью свободны от проводов! Огромная площадка, где вы вместе с друзьями становитесь героями виртуального сражения. Двигайтесь, уворачивайтесь и побеждайте.</p>
-                <p><em>[Вставь сюда остальной текст из Телеграфа про Арену]</em></p>
+                
+                <p><strong>Арена Виртуальной Реальности</strong> — это как Counter-Strike, пейнтбол или лазертаг, только внутри цифровых миров! Вы по-настоящему двигаетесь по просторной площадке и сражаетесь друг с другом.</p>
+                <p><strong>Для больших компаний:</strong> у нас две арены, каждая вмещает до 10 игроков. Но если у вас масштабный праздник, мы легко объединим их в одну огромную локацию для 20 участников одновременно!</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <p class="highlight">🤖 LEVEL 1. ВСЕЛЕННАЯ META FORCE</p>
+                <ul>
+                    <li><strong>Team Force</strong> — тактический шутер в духе классических командных сражений на 12 уникальных картах.</li>
+                    <li><strong>Star Force</strong> — футуристичные битвы в далёкой галактике с прыжками через телепорты.</li>
+                    <li><strong>Elevators</strong> — вертикальный шутер с захватывающим перемещением между этажами и зданиями.</li>
+                    <li><strong>Portals</strong> — аркадный шутер с четырьмя измерениями, лифтами и порталами.</li>
+                </ul>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <p class="highlight">👑 LEVEL 2. МИРЫ WARSTATION</p>
+                <ul>
+                    <li><strong>Warstation</strong> - космический шутер с уникальными персонажами, футуристичным оружием и системой наград.</li>
+                    <li><strong>Military</strong> - тактический командный бой с реалистичной графикой и легендарным оружием.</li>
+                    <li><strong>Animals</strong> - яркий экшен в стиле аниме с битвами и ловлей магических существ.</li>
+                    <li><strong>Family</strong> - весёлый набор мини-игр с простой механикой для отличных семейных праздников.</li>
+                    <li><strong>Kids</strong> - добрая коллекция мини-игр с развивающими заданиями для самых юных гостей.</li>
+                </ul>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <div class="price-block">
+                    <p>👤 <strong>Стоимость участия (за 1 человека):</strong></p>
+                    <ul>
+                        <li>30 мин: Будни — 1 190 ₽ | Выходные — 1 700 ₽</li>
+                        <li>60 мин: Будни — 1 890 ₽ | Выходные — 2 700 ₽</li>
+                    </ul>
+                    <p>👥 <strong>Выкуп всей арены под ключ (до 10 человек):</strong></p>
+                    <p>Будни — 14 700 ₽ | Выходные — 21 000 ₽</p>
+                </div>
             </div>
         </div>
     </div>
@@ -108,23 +173,20 @@
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://cdn.phototourl.com/free/2026-06-15-3766765b-ad90-41e3-b814-022cc53dbbdb.jpg" class="img-preview" alt="Зона Ауры">
-                <p><strong>Классический VR для компании и одиночных игр.</strong></p>
                 <p>Индивидуальные игровые зоны со шлемами высокого разрешения. Огромное количество миров, симуляторов и квестов на любой вкус и возраст.</p>
-                <p><em>[Вставь сюда остальной текст из Телеграфа про Зону Ауры]</em></p>
+                <p><em>[Сюда вставим текст про Зону Ауры]</em></p>
             </div>
         </div>
     </div>
 
-    <!-- 🎮 Каталог игр (Новый раздел внутри сайта!) -->
+    <!-- 🎮 Каталог игр -->
     <div class="accordion-item">
         <button class="accordion-header">🎮 Каталог игр Зоны Ауры</button>
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://cdn.phototourl.com/free/2026-06-15-992e81d1-70ce-4599-a29e-7971645004b8.jpg" class="img-preview" alt="Каталог игр">
-                <p class="highlight">Во что поиграть в одиночку и с друзьями:</p>
-                <p><strong>Для компаний:</strong> Командные квесты, совместные шутеры и веселые аркады.</p>
-                <p><strong>Для одного игрока:</strong> Одиночные хорроры, шутеры, симуляторы работы и творческие приложения.</p>
-                <p><em>[Скопируй и вставь сюда списки игр прямо из своей статьи в Телеграфе]</em></p>
+                <p><strong>Во что поиграть в одиночку и с друзьями:</strong></p>
+                <p><em>[Сюда вставим списки игр]</em></p>
             </div>
         </div>
     </div>
@@ -135,9 +197,8 @@
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://optim.tildacdn.com/tild3939-3130-4162-a135-336435323061/-/format/webp/photo-207_1.jpg.webp" class="img-preview" alt="Пиксель">
-                <p><strong>Подвижная интерактивная зона со светящимся полом.</strong></p>
                 <p>Динамичная игра на ловкость, скорость и реакцию. Наступайте на безопасные цвета, избегайте ловушек и бейте рекорды всей командой!</p>
-                <p><em>[Вставь сюда остальной текст из Телеграфа про Пиксель]</em></p>
+                <p><em>[Сюда вставим текст про Пиксель]</em></p>
             </div>
         </div>
     </div>
@@ -148,9 +209,8 @@
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://optim.tildacdn.com/tild3037-6261-4334-b565-633434636365/-/format/webp/photo-209.jpg.webp" class="img-preview" alt="Аттракционы">
-                <p><strong>Продвинутые динамические симуляторы.</strong></p>
                 <p>Максимальный адреналин на подвижных платформах. Американские горки, гонки и полеты с полным физическим ощущением движения.</p>
-                <p><em>[Вставь сюда остальной текст из Телеграфа про Аттракционы]</em></p>
+                <p><em>[Сюда вставим текст про Аттракционы]</em></p>
             </div>
         </div>
     </div>
@@ -161,9 +221,8 @@
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://optim.tildacdn.com/tild3465-6530-4061-a562-346466633337/-/resize/465x/-/format/webp/photo-057.jpg.webp" class="img-preview" alt="Комбо-наборы">
-                <p class="highlight">Пакетные предложения для лучших праздников:</p>
                 <p>Готовые миксы из главных развлечений нашего парка по специальной выгодной цене.</p>
-                <p><em>[Сюда можно вписать цены и условия ваших комбо-пакетов]</em></p>
+                <p><em>[Сюда вставим текст про Комбо]</em></p>
             </div>
         </div>
     </div>
@@ -175,7 +234,6 @@
             const accordionItem = button.parentElement;
             const content = button.nextElementSibling;
             
-            // Закрываем другие открытые окна, чтобы не загромождать экран (опционально)
             document.querySelectorAll('.accordion-item').forEach(item => {
                 if (item !== accordionItem) {
                     item.classList.remove('active');
