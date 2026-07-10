@@ -18,7 +18,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center; /* Опускает весь контент строго в центр страницы */
             padding: 40px 20px;
             overflow-x: hidden;
             position: relative;
@@ -38,12 +38,12 @@
         }
         body::before {
             background: radial-gradient(circle, #ff9f43 0%, rgba(0,0,0,0) 70%);
-            top: 5%;
+            top: 15%;
             left: -150px;
         }
         body::after {
             background: radial-gradient(circle, #00a8ff 0%, rgba(0,0,0,0) 70%);
-            bottom: 5%;
+            bottom: 15%;
             right: -150px;
         }
 
@@ -90,18 +90,19 @@
             z-index: 1;
         }
 
-        /* Карточки зон */
+        /* Карточки зон — Контраст улучшен для идеальной видимости */
         .accordion-item {
-            border: 1px solid rgba(255, 159, 67, 0.15);
+            border: 1px solid rgba(255, 159, 67, 0.3);
             border-radius: 14px;
             margin-bottom: 14px;
-            background: rgba(22, 25, 43, 0.8);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
-            transition: border-color 0.3s;
+            background: rgba(17, 20, 38, 0.95); /* Плотный темный фон */
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
         }
         .accordion-item:hover {
-            border-color: rgba(255, 159, 67, 0.35);
+            border-color: rgba(255, 159, 67, 0.6);
+            box-shadow: 0 10px 35px rgba(255, 159, 67, 0.15);
         }
 
         /* Кнопка открытия */
@@ -127,6 +128,7 @@
         }
         .header-title {
             flex-grow: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         .arrow {
             font-size: 11px;
@@ -142,18 +144,29 @@
         }
         .accordion-body {
             padding: 22px;
-            border-top: 1px solid rgba(255, 159, 67, 0.1);
+            border-top: 1px solid rgba(255, 159, 67, 0.2);
             font-size: 15px;
             line-height: 1.6;
-            color: #cbd5e1;
+            color: #f1f5f9; /* Максимально светлый читаемый текст */
+        }
+
+        /* Стилизация изображений */
+        .block-image {
+            width: 100%;
+            height: auto;
+            max-height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Вложенный аккордеон для игр в Ауре */
         .inner-accordion {
             margin-top: 15px;
-            border: 1px solid rgba(0, 168, 255, 0.2);
+            border: 1px solid rgba(0, 168, 255, 0.4);
             border-radius: 8px;
-            background: rgba(11, 13, 25, 0.6);
+            background: rgba(11, 13, 25, 0.9);
         }
         .inner-header {
             width: 100%;
@@ -177,25 +190,30 @@
         .inner-body {
             padding: 15px;
             font-size: 14px;
-            border-top: 1px solid rgba(0, 168, 255, 0.1);
+            border-top: 1px solid rgba(0, 168, 255, 0.2);
+            color: #f1f5f9;
         }
 
-        /* Стилизация оригинальных текстов */
+        /* Разделители и текст */
         p {
             margin-bottom: 12px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.4);
         }
         strong {
             color: #ffffff;
+            font-weight: 700;
         }
         .divider {
-            color: rgba(255, 159, 67, 0.15);
+            color: rgba(255, 159, 67, 0.4);
             margin: 18px 0;
             text-align: center;
             font-size: 11px;
             letter-spacing: 1px;
+            font-weight: bold;
         }
 
         @media (max-width: 480px) {
+            body { padding: 20px 12px; }
             .brand-title { font-size: 28px; }
             .brand-subtitle { font-size: 13px; }
             .accordion-header { padding: 14px 16px; font-size: 16px; }
@@ -229,6 +247,7 @@
         </button>
         <div class="accordion-content">
             <div class="accordion-body">
+                <img src="https://cdn.phototourl.com/free/2026-06-15-a0fd9848-5f0e-4658-ac13-15618754f7dd.webp" class="block-image" alt="Арена">
                 <p>Арена Виртуальной Реальности — это как Counter-Strike, пейнтбол или лазертаг, только внутри цифровых миров! Вы по-настоящему двигаетесь по просторной площадке и сражаетесь друг с другом.</p>
                 <p>Для больших компаний: у нас две арены, каждая вмещает до 10 игроков. Но если у вас масштабный праздник, мы легко объединим их в одну огромную локацию для 20 участников одновременно!</p>
                 
@@ -236,7 +255,7 @@
                 <p><strong>🤖 LEVEL 1. ВСЕЛЕННАЯ META FORCE</strong></p>
                 <p>• Team Force — тактический шутер в духе классических командных сражений на 12 уникальных картах.<br>
                 • Star Force — футуристичные битвы в далёкой галактике с прыжками через телепорты.<br>
-                • Elevators — вертикальный шутер с захватывающим перемещением между этажами и зданиями.<br>
+                • Elevators — vertical шутер с захватывающим перемещением между этажами и зданиями.<br>
                 • Portals — аркадный шутер с четырьмя измерениями, лифтами и порталами.</p>
                 
                 <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
@@ -268,6 +287,7 @@
         </button>
         <div class="accordion-content">
             <div class="accordion-body">
+                <img src="https://cdn.phototourl.com/free/2026-06-15-3766765b-ad90-41e3-b814-022cc53dbbdb.jpg" class="block-image" alt="Аура">
                 <p>Зона Ауры - это классическая виртуальная реальность, где вы управляете персонажем с помощью контроллеров. Вас ждут захватывающие кооперативные приключения, атмосферные хорроры, весёлые аркады и расслабляющие миры. Мы с радостью подберём идеальный вариант под ваш вкус или пришлём список игр нужного жанра!</p>
                 <p>👥 На локации: до 5 участников одновременно.</p>
                 
@@ -337,6 +357,7 @@
         </button>
         <div class="accordion-content">
             <div class="accordion-body">
+                <img src="https://cdn.phototourl.com/free/2026-06-15-332f5c3f-3d49-46f4-b7da-4002ff1d3092.webp" class="block-image" alt="Пиксель">
                 <p>Зона Пиксель - это подвижная интерактивная зона со светящимся полом. Главная задача: быстро наступать на безопасные плитки и ловко обходить препятствия. Отличный выбор для активного и динамичного отдыха!</p>
                 
                 <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
@@ -368,6 +389,7 @@
         </button>
         <div class="accordion-content">
             <div class="accordion-body">
+                <img src="https://cdn.phototourl.com/free/2026-06-15-309285f2-29ac-43a1-b36d-2b65c7853e7f.webp" class="block-image" alt="Аттракционы">
                 <p>Зона Аттракционов — коллекция продвинутых симуляторов с подвижными платформами, гидравликой и полным погружением в игру! <br>
                 (Стоимость указана за 1 участника)</p>
                 
@@ -408,6 +430,7 @@
         </button>
         <div class="accordion-content">
             <div class="accordion-body">
+                <img src="https://optim.tildacdn.com/tild3465-6530-4061-a562-346466633337/-/resize/465x/-/format/webp/photo-057.jpg.webp" class="block-image" alt="Комбо">
                 <p>Выбирайте идеальный формат погружения для себя, компании или всей семьи! Мы собрали лучшие активности парка в выгодные пакетные предложения.</p>
                 
                 <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
@@ -514,19 +537,17 @@
     const innerHeader = document.querySelector('.inner-header');
     if(innerHeader) {
         innerHeader.addEventListener('click', (e) => {
-            e.stopPropagation(); // Исключаем срабатывание родительского клика
+            e.stopPropagation(); // Предотвращаем закрытие основного блока
             const content = innerHeader.nextElementSibling;
             const parentContent = innerHeader.closest('.accordion-content');
             
             if (content.style.maxHeight) {
                 content.style.maxHeight = null;
-                // Даем время на анимацию закрытия, затем подстраиваем родителя
                 setTimeout(() => {
                     parentContent.style.maxHeight = parentContent.scrollHeight + "px";
                 }, 300);
             } else {
                 content.style.maxHeight = content.scrollHeight + "px";
-                // Расширяем родительский контейнер, чтобы влез раскрытый список
                 parentContent.style.maxHeight = (parentContent.scrollHeight + content.scrollHeight) + "px";
             }
         });
