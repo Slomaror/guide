@@ -19,10 +19,12 @@
             color: var(--text-color);
             line-height: 1.6;
             padding: 20px 15px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         .container { max-width: 500px; margin: 0 auto; }
         
-        /* Измененная центрированная шапка */
+        /* Центрированная шапка */
         .header { text-align: center; margin-bottom: 25px; }
         .header h1 { font-size: 26px; font-weight: 800; margin-bottom: 4px; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
         .header h1 span { color: #7d5fff; font-size: 14px; text-transform: none; font-weight: 500; display: inline-block; margin-left: 8px; vertical-align: middle; background: rgba(125, 95, 255, 0.15); padding: 2px 8px; border-radius: 4px; letter-spacing: 0; }
@@ -49,14 +51,15 @@
             text-align: left;
             padding: 14px 16px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700; /* Четкий жирный заголовок */
             cursor: pointer;
             display: flex;
             align-items: center;
             outline: none;
+            text-shadow: none; /* Убираем любые размытия */
         }
         
-        /* Стиль Translucent Pack */
+        /* Стиль Translucent Pack (четкие иконки без свечения) */
         .tg-icon {
             display: inline-flex;
             align-items: center;
@@ -111,7 +114,7 @@
             color: #54a0ff;
             padding: 12px;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             text-align: left;
             cursor: pointer;
             display: flex;
@@ -138,6 +141,13 @@
         .accordion-body p, .inner-body p { margin-bottom: 12px; }
         .accordion-body ul, .inner-body ul { margin-bottom: 15px; padding-left: 20px; }
         .accordion-body li, .inner-body li { margin-bottom: 6px; }
+        
+        /* Абсолютно четкий жирный текст */
+        strong, b {
+            font-weight: 700;
+            color: #ffffff;
+        }
+        
         .divider { 
             color: #3b3f5c; 
             margin: 15px 0; 
@@ -145,7 +155,7 @@
             letter-spacing: 2px;
             font-size: 12px;
         }
-        .highlight { color: #55efc4; font-weight: bold; margin-top: 10px; display: block; }
+        .highlight { color: #55efc4; font-weight: 700; margin-top: 10px; display: block; }
         .price-block { background: #1e2238; padding: 12px; border-radius: 8px; margin: 12px 0; border: 1px solid #2d3354; }
     </style>
 </head>
@@ -236,7 +246,7 @@
                 
                 <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
                 
-                <p>ℹ️ Хотите посмотреть полный каталог игр или выбрать жанр? Просто напишите нам в этот чат — мы всё пришлём! ❤️</p>
+                <p>ℹ️ Полный список игр тут 👇</p>
 
                 <!-- Вложенный каталог игр -->
                 <div class="inner-spoiler">
@@ -306,7 +316,7 @@
             <div class="accordion-body">
                 <img src="https://optim.tildacdn.com/tild3939-3130-4162-a135-336435323061/-/format/webp/photo-207_1.jpg.webp" class="img-preview" alt="Пиксель">
                 
-                <p><strong>Зона Пиксель</strong> — это подвижная интерактивная зона со светящимся полом. Главная задача: быстро наступавать на безопасные плитки и ловко обходить препятствия. Отличный выбор для активного и динамичного отдыха!</p>
+                <p><strong>Зона Пиксель</strong> — это подвижная интерактивная зона со светящимся полом. Главная задача: быстро наступать на безопасные плитки и ловко обходить препятствия. Отличный выбор для активного и динамичного отдыха!</p>
                 
                 <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
                 
@@ -343,8 +353,24 @@
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://optim.tildacdn.com/tild3037-6261-4334-b565-633434636365/-/format/webp/photo-209.jpg.webp" class="img-preview" alt="Аттракционы">
-                <p>Максимальный адреналин на подвижных платформах. Американские горки, гонки и полеты с полным физическим ощущением движения.</p>
-                <p><em>[Сюда вставим текст про Аттракционы]</em></p>
+                
+                <p><strong>Зона Аттракционов</strong> — коллекция продвинутых симуляторов с подвижными платформами, гидравликой и полным погружением в игру! <br><small style="color: var(--muted-text);">(Стоимость указана за 1 участника)</small></p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <p><strong>🙂 Капсулы</strong> (спокойный симулятор американских горок, приключения и хорроры)<br>Будни: 770 ₽ | Выходные: 1 100 ₽</p>
+                
+                <p><strong>🔫 Тир</strong> (статичный симулятор: сражения с динозаврами, зомби или крысами-пиратами)<br>Будни: 350 ₽ | Выходные: 500 ₽</p>
+                
+                <p><strong>🚗 Автосимуляторы</strong> (гонки на гидравлической платформе с полным погружением)<br>Будни: 15 мин — 700 ₽ / 30 мин — 1 260 ₽<br>Выходные: 15 мин — 1 000 ₽ / 30 мин — 1 800 ₽</p>
+                
+                <p><strong>🤖 Мотосимулятор</strong> (динамичный байк с интерактивным рулём)<br>Будни: 770 ₽ | Выходные: 1 100 ₽</p>
+                
+                <p><strong>🏖 Лыжи</strong> (лыжные гонки, где вы управляете движениями тела)<br>Будни: 980 ₽ | Выходные: 1 400 ₽</p>
+                
+                <p><strong>📍 Летающая тарелка</strong> (симулятор гигантских качелей, платформа крутится на 360°, до 5 человек)<br>Будни: 1 400 ₽ | Выходные: 2 000 ₽</p>
+                
+                <p><strong>🎙 Экстрим</strong> (вертикальная подвижная платформа для максимального ощущения скорости)<br>Будни: 910 ₽ | Выходные: 1 300 ₽</p>
             </div>
         </div>
     </div>
