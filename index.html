@@ -1,1 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навигатор по VR-парку Aura</title>
+    <style>
+        :root {
+            --bg-color: #0d0e15;
+            --card-bg: #161824;
+            --accent-color: #6c5ce7;
+            --text-color: #ffffff;
+            --muted-text: #a0a5c1;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            padding: 20px 15px;
+        }
+        .container { max-width: 500px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 25px; }
+        .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+        .header p { font-size: 14px; color: var(--muted-text); }
+        
+        .accordion-item {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            border: 1px solid #23263b;
+        }
+        .accordion-header {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            text-align: left;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+        }
+        .accordion-header::after {
+            content: '▼';
+            font-size: 12px;
+            color: var(--muted-text);
+            transition: transform 0.2s;
+        }
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #1a1d2c;
+        }
+        .accordion-body {
+            padding: 16px;
+            font-size: 14px;
+            color: #e2e4f0;
+        }
+        .accordion-body p { margin-bottom: 12px; }
+        .accordion-body p:last-child { margin-bottom: 0; }
+        
+        .btn-link {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <div class="header">
+        <h1>Aura VR Park</h1>
+        <p>Ваш интерактивный гид по игровым зонам</p>
+    </div>
+
+    <!-- Зона 1 -->
+    <div class="accordion-item">
+        <button class="accordion-header">1️⃣ VR-Арена</button>
+        <div class="accordion-content">
+            <div class="accordion-body">
+                <p><strong>Командный шутер со свободным перемещением.</strong></p>
+                <p>Здесь вы не привязаны к проводам! Огромная площадка, где вы вместе с друзьями становитесь героями захватывающего сражения. Двигайтесь, уворачивайтесь и побеждайте команду соперников.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Зона 2 -->
+    <div class="accordion-item">
+        <button class="accordion-header">2️⃣ Зона Ауры</button>
+        <div class="accordion-content">
+            <div class="accordion-body">
+                <p><strong>Классический VR с огромным каталогом развлечений.</strong></p>
+                <p>Индивидуальные игровые зоны, где каждый найдет что-то для себя: от спокойных путешествий и симуляторов до динамичных экшенов.</p>
+                <a href="https://telegra.ph/VR-park-vo-chto-poigrat-v-odinochku-i-s-druzyami-06-15" class="btn-link" target="_blank">Посмотреть каталог игр</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Зона 3 -->
+    <div class="accordion-item">
+        <button class="accordion-header">3️⃣ Пиксель</button>
+        <div class="accordion-content">
+            <div class="accordion-body">
+                <p><strong>Подвижная интерактивная зона со светящимся полом.</strong></p>
+                <p>Игра на скорость, ловкость и координацию для самых активных! Наступайте на нужные цвета, избегайте ловушек и набирайте очки всей командой.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Зона 4 -->
+    <div class="accordion-item">
+        <button class="accordion-header">4️⃣ Зона аттракционов</button>
+        <div class="accordion-content">
+            <div class="accordion-body">
+                <p><strong>Продвинутые симуляторы с полным погружением.</strong></p>
+                <p>Почувствуйте настоящий драйв, скорость и адреналин на специальных подвижных платформах, которые полностью синхронизированы с происходящим в очках.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Комбо -->
+    <div class="accordion-item">
+        <button class="accordion-header">⭐️ Комбо-наборы</button>
+        <div class="accordion-content">
+            <div class="accordion-body">
+                <p><strong>Готовые миксы по выгодной цене!</strong></p>
+                <p>Идеальное решение для праздников и больших компаний. Мы объединили лучшие зоны парка в пакетные предложения, чтобы вы попробовали всё и сэкономили бюджет.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+            const accordionItem = button.parentElement;
+            const content = button.nextElementSibling;
+            
+            accordionItem.classList.toggle('active');
+            
+            if (accordionItem.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = "0px";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
