@@ -51,33 +51,38 @@
             text-align: left;
             padding: 14px 16px;
             font-size: 16px;
-            font-weight: 700; /* Четкий жирный заголовок */
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             outline: none;
-            text-shadow: none; /* Убираем любые размытия */
+            text-shadow: none !important; /* Полностью убираем размытие */
         }
         
-        /* Стиль Translucent Pack (четкие иконки без свечения) */
+        /* Стилизованные контейнеры для иконок со скринов */
         .tg-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             margin-right: 12px;
-            font-size: 16px;
             flex-shrink: 0;
         }
-        .icon-red { background-color: rgba(235, 94, 85, 0.15); color: #eb5e55; }
-        .icon-blue { background-color: rgba(84, 160, 255, 0.15); color: #54a0ff; }
-        .icon-green { background-color: rgba(46, 213, 115, 0.15); color: #2ed573; }
-        .icon-orange { background-color: rgba(255, 159, 67, 0.15); color: #ff9f43; }
-        .icon-purple { background-color: rgba(125, 95, 255, 0.15); color: #7d5fff; }
+        .tg-icon svg {
+            width: 20px;
+            height: 20px;
+        }
         
-        .header-title { flex-grow: 1; }
+        /* Цветовые схемы подложек иконок */
+        .icon-arena { background-color: rgba(235, 94, 85, 0.12); }
+        .icon-aura { background-color: rgba(84, 160, 255, 0.12); }
+        .icon-pixel { background-color: rgba(46, 213, 115, 0.12); }
+        .icon-attractions { background-color: rgba(84, 160, 255, 0.12); }
+        .icon-combo { background-color: rgba(255, 159, 67, 0.12); }
+        
+        .header-title { flex-grow: 1; color: #ffffff; }
         .arrow {
             font-size: 11px;
             color: var(--muted-text);
@@ -98,6 +103,7 @@
             padding: 16px;
             font-size: 14px;
             color: #e2e4f0;
+            text-shadow: none !important;
         }
         
         /* Вложенный спойлер каталога */
@@ -145,7 +151,8 @@
         /* Абсолютно четкий жирный текст */
         strong, b {
             font-weight: 700;
-            color: #ffffff;
+            color: #ffffff !important;
+            text-shadow: none !important;
         }
         
         .divider { 
@@ -171,7 +178,10 @@
     <!-- VR-Арена -->
     <div class="accordion-item">
         <button class="accordion-header">
-            <span class="tg-icon icon-red">🎮</span>
+            <span class="tg-icon icon-arena">
+                <!-- Скрин 1: Геймпад -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="#eb5e55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01"/><rect x="2" y="6" width="20" height="12" rx="3"/></svg>
+            </span>
             <span class="header-title">VR-Арена</span>
             <span class="arrow">▼</span>
         </button>
@@ -218,10 +228,13 @@
         </div>
     </div>
 
-    <!-- Зона Ауры + Каталог -->
+    <!-- Зона Ауры -->
     <div class="accordion-item">
         <button class="accordion-header">
-            <span class="tg-icon icon-blue">🌐</span>
+            <span class="tg-icon icon-aura">
+                <!-- Скрин 2: Силуэты людей -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="#54a0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+            </span>
             <span class="header-title">Зона Ауры</span>
             <span class="arrow">▼</span>
         </button>
@@ -308,7 +321,10 @@
     <!-- Зона Пиксель -->
     <div class="accordion-item">
         <button class="accordion-header">
-            <span class="tg-icon icon-green">🟩</span>
+            <span class="tg-icon icon-pixel">
+                <!-- Скрин 3: Куб -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2ed573" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </span>
             <span class="header-title">Зона Пиксель</span>
             <span class="arrow">▼</span>
         </button>
@@ -316,7 +332,7 @@
             <div class="accordion-body">
                 <img src="https://optim.tildacdn.com/tild3939-3130-4162-a135-336435323061/-/format/webp/photo-207_1.jpg.webp" class="img-preview" alt="Пиксель">
                 
-                <p><strong>Зона Пиксель</strong> — это подвижная интерактивная зона со светящимся полом. Главная задача: быстро наступать на безопасные плитки и ловко обходить препятствия. Отличный выбор для активного и динамичного отдыха!</p>
+                <p><strong>Зона Пиксель</strong> — это подвижная интерактивная зона со светящимся полом. Главная задача: быстро наступать на безопасные плитки и ловко обходить препятствия. Отличный выбор для active и динамичного отдыха!</p>
                 
                 <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
                 
@@ -346,7 +362,10 @@
     <!-- Зона аттракционов -->
     <div class="accordion-item">
         <button class="accordion-header">
-            <span class="tg-icon icon-orange">⚡</span>
+            <span class="tg-icon icon-attractions">
+                <!-- Скрин 4: Голова робота/симулятор -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="#54a0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 15h.01M16 15h.01"/></svg>
+            </span>
             <span class="header-title">Зона аттракционов</span>
             <span class="arrow">▼</span>
         </button>
@@ -378,15 +397,88 @@
     <!-- Комбо-наборы -->
     <div class="accordion-item">
         <button class="accordion-header">
-            <span class="tg-icon icon-purple">⭐</span>
+            <span class="tg-icon icon-combo">
+                <!-- Скрин 5: Корона -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ff9f43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M3 20h18"/></svg>
+            </span>
             <span class="header-title">Комбо-наборы</span>
             <span class="arrow">▼</span>
         </button>
         <div class="accordion-content">
             <div class="accordion-body">
                 <img src="https://optim.tildacdn.com/tild3465-6530-4061-a562-346466633337/-/resize/465x/-/format/webp/photo-057.jpg.webp" class="img-preview" alt="Комбо-наборы">
-                <p>Готовые миксы из главных развлечений нашего парка по специальной выгодной цене.</p>
-                <p><em>[Сюда вставим текст про Комбо]</em></p>
+                
+                <p>Выбирайте идеальный формат погружения для себя, компании или всей семьи! Мы собрали лучшие активности парка в выгодные пакетные предложения.</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <p>🗺 <strong>Экспедиция</strong><br>Идеально для глубокого погружения и знакомства с главными игровыми зонами.</p>
+                <ul>
+                    <li>Арена виртуальной реальности — 1 час</li>
+                    <li>Зона Ауры — 1 час</li>
+                </ul>
+                <p><strong>Стоимость:</strong><br>• Будни: 3 000 ₽<br>• Выходные и праздники: 4 000 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <p>⚡️ <strong>Кардио</strong><br>Динамичный и активный микс для тех, кто любит много двигаться.</p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут</li>
+                    <li>Интерактив Пиксели — 30 минут</li>
+                </ul>
+                <p><strong>Стоимость:</strong><br>• Будни: 1 800 ₽<br>• Выходные и праздники: 2 500 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <p>🚀 <strong>Квадро</strong><br>Максимум разнообразия: от шутеров и свободного перемещения до драйвовых симуляторов.</p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут</li>
+                    <li>Зона Ауры — 30 минут</li>
+                    <li>Капсулы — 1 катание</li>
+                    <li>Автосимулятор — 15 минут</li>
+                </ul>
+                <p><strong>Стоимость:</strong><br>• Будни: 3 200 ₽<br>• Выходные и праздники: 4 500 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <p>🛸 <strong>ВР Сквад 4</strong><br>Готовое командное приключение для компании из 4 человек.</p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут (для 4 игроков)</li>
+                    <li>НЛО (Летающая тарелка) — 1 сеанс (для 4 игроков)</li>
+                </ul>
+                <p><strong>Стоимость:</strong><br>• Будни: 8 300 ₽<br>• Выходные и праздники: 12 000 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <p>🛸 <strong>ВР Сквад 5</strong><br>Идеальный сбор и совместный полет для компании из 5 человек.</p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут (для 5 игроков)</li>
+                    <li>НЛО (Летающая тарелка) — 1 сеанс (для 5 игроков)</li>
+                </ul>
+                <p><strong>Стоимость:</strong><br>• Будни: 10 000 ₽<br>• Выходные и праздники: 14 500 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <p>🏆 <strong>Марафон</strong><br>Большой тест-драйв всех главных фишек парка для тех, кто хочет попробовать всё.</p>
+                <ul>
+                    <li>Арена виртуальной реальности — 30 минут</li>
+                    <li>Зона Ауры — 30 минут</li>
+                    <li>Интерактив Пиксели — 15 минут</li>
+                    <li>Аттракционы — по 1 катанию на каждом симуляторе парка</li>
+                </ul>
+                <p><strong>Стоимость:</strong><br>• Будни: 7 000 ₽<br>• Выходные и праздники: 10 000 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <p>🌪 <strong>Экстрим</strong><br>Чистый адреналин и полное погружение на динамических платформах.</p>
+                <ul>
+                    <li>🕹 Зона Аттракционов — по 1 катанию на каждом симуляторе парка (Капсулы, Летающая тарелка, Горнолыжный, Экстрим, Тир, Мото- и Автосимуляторы).</li>
+                </ul>
+                <p><strong>Стоимость:</strong><br>• Будни: 4 500 ₽<br>• Выходные и праздники: 6 000 ₽</p>
+                
+                <div class="divider">━━━━━━━━━━━━━━━━━━━</div>
+                
+                <p>💡 <em>Забронировать комбо-набор или задать вопрос можно напрямую нашему администратору в мессенджере и при посещении парка!</em></p>
             </div>
         </div>
     </div>
