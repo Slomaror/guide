@@ -14,10 +14,10 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.5;
+            line-height: 1.6;
             padding: 20px 15px;
         }
         .container { max-width: 500px; margin: 0 auto; }
@@ -59,7 +59,7 @@
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.2s ease-out;
+            transition: max-height 0.25s ease-out;
             background-color: #1a1d2c;
         }
         .accordion-body {
@@ -67,22 +67,18 @@
             font-size: 14px;
             color: #e2e4f0;
         }
+        .img-preview {
+            width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: block;
+        }
         .accordion-body p { margin-bottom: 12px; }
         .accordion-body p:last-child { margin-bottom: 0; }
-        
-        .btn-link {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            margin-top: 10px;
-            font-size: 14px;
-            text-align: center;
-            width: 100%;
-        }
+        .highlight { color: #55efc4; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -90,61 +86,84 @@
 <div class="container">
     <div class="header">
         <h1>Aura VR Park</h1>
-        <p>Ваш интерактивный гид по игровым зонам</p>
+        <p>Ваш быстрый мобильный гид по парку</p>
     </div>
 
-    <!-- Зона 1 -->
+    <!-- 1️⃣ VR-Арена -->
     <div class="accordion-item">
         <button class="accordion-header">1️⃣ VR-Арена</button>
         <div class="accordion-content">
             <div class="accordion-body">
+                <img src="https://optim.tildacdn.com/tild3965-3765-4932-a132-373639343164/-/resize/465x/-/format/webp/photo-102.jpg.webp" class="img-preview" alt="VR-Арена">
                 <p><strong>Командный шутер со свободным перемещением.</strong></p>
-                <p>Здесь вы не привязаны к проводам! Огромная площадка, где вы вместе с друзьями становитесь героями захватывающего сражения. Двигайтесь, уворачивайтесь и побеждайте команду соперников.</p>
+                <p>Здесь вы полностью свободны от проводов! Огромная площадка, где вы вместе с друзьями становитесь героями виртуального сражения. Двигайтесь, уворачивайтесь и побеждайте.</p>
+                <p><em>[Вставь сюда остальной текст из Телеграфа про Арену]</em></p>
             </div>
         </div>
     </div>
 
-    <!-- Зона 2 -->
+    <!-- 2️⃣ Зона Ауры -->
     <div class="accordion-item">
         <button class="accordion-header">2️⃣ Зона Ауры</button>
         <div class="accordion-content">
             <div class="accordion-body">
-                <p><strong>Классический VR с огромным каталогом развлечений.</strong></p>
-                <p>Индивидуальные игровые зоны, где каждый найдет что-то для себя: от спокойных путешествий и симуляторов до динамичных экшенов.</p>
-                <a href="https://telegra.ph/VR-park-vo-chto-poigrat-v-odinochku-i-s-druzyami-06-15" class="btn-link" target="_blank">Посмотреть каталог игр</a>
+                <img src="https://cdn.phototourl.com/free/2026-06-15-3766765b-ad90-41e3-b814-022cc53dbbdb.jpg" class="img-preview" alt="Зона Ауры">
+                <p><strong>Классический VR для компании и одиночных игр.</strong></p>
+                <p>Индивидуальные игровые зоны со шлемами высокого разрешения. Огромное количество миров, симуляторов и квестов на любой вкус и возраст.</p>
+                <p><em>[Вставь сюда остальной текст из Телеграфа про Зону Ауры]</em></p>
             </div>
         </div>
     </div>
 
-    <!-- Зона 3 -->
+    <!-- 🎮 Каталог игр (Новый раздел внутри сайта!) -->
     <div class="accordion-item">
-        <button class="accordion-header">3️⃣ Пиксель</button>
+        <button class="accordion-header">🎮 Каталог игр Зоны Ауры</button>
         <div class="accordion-content">
             <div class="accordion-body">
-                <p><strong>Подвижная интерактивная зона со светящимся полом.</strong></p>
-                <p>Игра на скорость, ловкость и координацию для самых активных! Наступайте на нужные цвета, избегайте ловушек и набирайте очки всей командой.</p>
+                <img src="https://cdn.phototourl.com/free/2026-06-15-992e81d1-70ce-4599-a29e-7971645004b8.jpg" class="img-preview" alt="Каталог игр">
+                <p class="highlight">Во что поиграть в одиночку и с друзьями:</p>
+                <p><strong>Для компаний:</strong> Командные квесты, совместные шутеры и веселые аркады.</p>
+                <p><strong>Для одного игрока:</strong> Одиночные хорроры, шутеры, симуляторы работы и творческие приложения.</p>
+                <p><em>[Скопируй и вставь сюда списки игр прямо из своей статьи в Телеграфе]</em></p>
             </div>
         </div>
     </div>
 
-    <!-- Зона 4 -->
+    <!-- 3️⃣ Пиксель -->
+    <div class="accordion-item">
+        <button class="accordion-header">3️⃣ Зона Пиксель</button>
+        <div class="accordion-content">
+            <div class="accordion-body">
+                <img src="https://optim.tildacdn.com/tild3939-3130-4162-a135-336435323061/-/format/webp/photo-207_1.jpg.webp" class="img-preview" alt="Пиксель">
+                <p><strong>Подвижная интерактивная зона со светящимся полом.</strong></p>
+                <p>Динамичная игра на ловкость, скорость и реакцию. Наступайте на безопасные цвета, избегайте ловушек и бейте рекорды всей командой!</p>
+                <p><em>[Вставь сюда остальной текст из Телеграфа про Пиксель]</em></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4️⃣ Зона аттракционов -->
     <div class="accordion-item">
         <button class="accordion-header">4️⃣ Зона аттракционов</button>
         <div class="accordion-content">
             <div class="accordion-body">
-                <p><strong>Продвинутые симуляторы с полным погружением.</strong></p>
-                <p>Почувствуйте настоящий драйв, скорость и адреналин на специальных подвижных платформах, которые полностью синхронизированы с происходящим в очках.</p>
+                <img src="https://optim.tildacdn.com/tild3037-6261-4334-b565-633434636365/-/format/webp/photo-209.jpg.webp" class="img-preview" alt="Аттракционы">
+                <p><strong>Продвинутые динамические симуляторы.</strong></p>
+                <p>Максимальный адреналин на подвижных платформах. Американские горки, гонки и полеты с полным физическим ощущением движения.</p>
+                <p><em>[Вставь сюда остальной текст из Телеграфа про Аттракционы]</em></p>
             </div>
         </div>
     </div>
 
-    <!-- Комбо -->
+    <!-- ⭐️ Комбо-наборы -->
     <div class="accordion-item">
         <button class="accordion-header">⭐️ Комбо-наборы</button>
         <div class="accordion-content">
             <div class="accordion-body">
-                <p><strong>Готовые миксы по выгодной цене!</strong></p>
-                <p>Идеальное решение для праздников и больших компаний. Мы объединили лучшие зоны парка в пакетные предложения, чтобы вы попробовали всё и сэкономили бюджет.</p>
+                <img src="https://optim.tildacdn.com/tild3465-6530-4061-a562-346466633337/-/resize/465x/-/format/webp/photo-057.jpg.webp" class="img-preview" alt="Комбо-наборы">
+                <p class="highlight">Пакетные предложения для лучших праздников:</p>
+                <p>Готовые миксы из главных развлечений нашего парка по специальной выгодной цене.</p>
+                <p><em>[Сюда можно вписать цены и условия ваших комбо-пакетов]</em></p>
             </div>
         </div>
     </div>
@@ -156,6 +175,14 @@
             const accordionItem = button.parentElement;
             const content = button.nextElementSibling;
             
+            // Закрываем другие открытые окна, чтобы не загромождать экран (опционально)
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                if (item !== accordionItem) {
+                    item.classList.remove('active');
+                    item.querySelector('.accordion-content').style.maxHeight = "0px";
+                }
+            });
+
             accordionItem.classList.toggle('active');
             
             if (accordionItem.classList.contains('active')) {
